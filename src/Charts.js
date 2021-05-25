@@ -1,36 +1,189 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import axios from "axios";
+
+//const hour = [];
+function buildSPD(data) {
+  const spd = [];
+  for (let d in data) {
+    if (data[d]._id.party == "SPD") {
+      let spdnew = {
+        x: data[d]._id.hour,
+        y: data[d].count,
+      };
+      spd.push(spdnew);
+    }
+  }
+  return spd;
+}
+function buildFDP(data) {
+  const fdp = [];
+  for (let d in data) {
+    if (data[d]._id.party == "FDP") {
+      let fdpnew = {
+        x: data[d]._id.hour,
+        y: data[d].count,
+      };
+      fdp.push(fdpnew);
+    }
+  }
+  return fdp;
+}
+function buildAFD(data) {
+  const afd = [];
+  for (let d in data) {
+    if (data[d]._id.party == "AfD") {
+      let afdnew = {
+        x: data[d]._id.hour,
+        y: data[d].count,
+      };
+      afd.push(afdnew);
+    }
+  }
+  return afd;
+}
+function buildLinke(data) {
+  const linke = [];
+  for (let d in data) {
+    if (data[d]._id.party == "Linke") {
+      let linkenew = {
+        x: data[d]._id.hour,
+        y: data[d].count,
+      };
+      linke.push(linkenew);
+    }
+  }
+  return linke;
+}
+function buildGruen(data) {
+  const gruen = [];
+  for (let d in data) {
+    if (data[d]._id.party == "Gruen") {
+      let gruennew = {
+        x: data[d]._id.hour,
+        y: data[d].count,
+      };
+      gruen.push(gruennew);
+    }
+  }
+  return gruen;
+}
+
+function buildCDU(data) {
+  const cdu = [];
+  for (let d in data) {
+    if (data[d]._id.party == "CDU") {
+      let cdunew = {
+        x: data[d]._id.hour,
+        y: data[d].count,
+      };
+      cdu.push(cdunew);
+    }
+  }
+  return cdu;
+}
+const t = [];
+let parties = new Set([]);
 
 function Charts() {
+  const [cdu, setCDU] = useState({});
+  const [spd, setSPD] = useState({});
+  const [fdp, setFDP] = useState({});
+  const [afd, setAFD] = useState({});
+  const [linke, setLinke] = useState({});
+  const [gruen, setGruen] = useState({});
+
+  const [hour, setHour] = useState({});
+  const options = {
+    responsive: true,
+    tooltips: {
+      mode: "label",
+    },
+    elements: {
+      line: {
+        fill: false,
+      },
+    },
+    scales: {
+      xAxes: [
+        {
+          display: true,
+        },
+      ],
+      yAxes: [],
+    },
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://localhost:8080/jsonProcessed")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          //console.log(data);
+          let chartdataCDU = buildCDU(data);
+          setCDU(chartdataCDU);
+          let chartdataSPD = buildSPD(data);
+          setSPD(chartdataSPD);
+          let chartdataFDP = buildFDP(data);
+          setFDP(chartdataFDP);
+          let chartdataAFD = buildAFD(data);
+          setAFD(chartdataAFD);
+          let chartdataLinke = buildLinke(data);
+          setLinke(chartdataLinke);
+          let chartdataGruen = buildGruen(data);
+          setGruen(chartdataGruen);
+
+          /*for (let d in data) {
+            t.push(data[d]._id.hour);
+          }
+          setHour(t);*/
+        });
+    };
+    fetchData();
+  }, []);
   return (
     <div className="charts">
-      <Line
-        data={{
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [
-            {
-              label: "# of votes",
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
+      {cdu?.length > 0 &&
+        spd?.length > 0 &&
+        fdp?.length > 0 &&
+        afd?.length > 0 &&
+        linke?.length > 0 && (
+          <Bar
+            data={{
+              labels: [15, 16, 17, 18, 19, 20, 21, 22],
+              datasets: [
+                {
+                  label: "CDU",
+                  data: cdu,
+                  backgroundColor: "rgba(255, 99, 132, 0.2)",
+                },
+                {
+                  label: "SPD",
+                  data: spd,
+                  backgroundColor: "rgba(54, 162, 235, 0.2)",
+                },
+                {
+                  label: "FDP",
+                  data: fdp,
+                  backgroundColor: "rgba(255, 206, 86, 0.2)",
+                },
+                {
+                  label: "AFD",
+                  data: afd,
+                  backgroundColor: "rgba(75, 192, 192, 0.2)",
+                },
+                {
+                  label: "Linke",
+                  data: linke,
+                  backgroundColor: "rgba(153, 102, 255, 0.2)",
+                },
               ],
-            },
-          ],
-        }}
-        options={{
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        }}
-      />
+            }}
+            //options={options}
+          />
+        )}
     </div>
   );
 }
