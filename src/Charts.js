@@ -58,7 +58,7 @@ function buildLinke(data) {
 function buildGruen(data) {
   const gruen = [];
   for (let d in data) {
-    if (data[d]._id.party == "Gruen") {
+    if (data[d]._id.party == "B90") {
       let gruennew = {
         x: data[d]._id.hour,
         y: data[d].count,
@@ -86,12 +86,12 @@ const t = [];
 let parties = new Set([]);
 
 function Charts() {
-  const [cdu, setCDU] = useState({});
-  const [spd, setSPD] = useState({});
-  const [fdp, setFDP] = useState({});
-  const [afd, setAFD] = useState({});
-  const [linke, setLinke] = useState({});
-  const [gruen, setGruen] = useState({});
+  const [cdu, setCDU] = useState(0);
+  const [spd, setSPD] = useState(0);
+  const [fdp, setFDP] = useState(0);
+  const [afd, setAFD] = useState(0);
+  const [linke, setLinke] = useState(0);
+  const [gruen, setGruen] = useState(0);
 
   const [hour, setHour] = useState({});
   const options = {
@@ -145,45 +145,45 @@ function Charts() {
   }, []);
   return (
     <div className="charts">
-      {cdu?.length > 0 &&
-        spd?.length > 0 &&
-        fdp?.length > 0 &&
-        afd?.length > 0 &&
-        linke?.length > 0 && (
-          <Bar
-            data={{
-              labels: [15, 16, 17, 18, 19, 20, 21, 22],
-              datasets: [
-                {
-                  label: "CDU",
-                  data: cdu,
-                  backgroundColor: "rgba(255, 99, 132, 0.2)",
-                },
-                {
-                  label: "SPD",
-                  data: spd,
-                  backgroundColor: "rgba(54, 162, 235, 0.2)",
-                },
-                {
-                  label: "FDP",
-                  data: fdp,
-                  backgroundColor: "rgba(255, 206, 86, 0.2)",
-                },
-                {
-                  label: "AFD",
-                  data: afd,
-                  backgroundColor: "rgba(75, 192, 192, 0.2)",
-                },
-                {
-                  label: "Linke",
-                  data: linke,
-                  backgroundColor: "rgba(153, 102, 255, 0.2)",
-                },
-              ],
-            }}
-            //options={options}
-          />
-        )}
+      {
+        <Bar
+          data={{
+            labels: [15, 16, 17, 18, 19, 20, 21, 22],
+            datasets: [
+              {
+                label: "CDU",
+                data: cdu,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+              },
+              {
+                label: "SPD",
+                data: spd,
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+              },
+              {
+                label: "FDP",
+                data: fdp,
+                backgroundColor: "rgba(255, 206, 86, 0.2)",
+              },
+              {
+                label: "AFD",
+                data: afd,
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+              },
+              {
+                label: "Linke",
+                data: linke,
+                backgroundColor: "rgba(153, 102, 255, 0.2)",
+              },
+              {
+                label: "Gruen",
+                data: gruen,
+              },
+            ],
+          }}
+          //options={options}
+        />
+      }
     </div>
   );
 }
