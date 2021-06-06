@@ -21,8 +21,8 @@ import {
 import "./App.css";
 import logo from "./logo.png";
 import map from "./map.png";
-import Twitts from "./Twitts";
-import Charts from "./Charts";
+import Tweets from "./Tweets";
+import CountTotalByYear from "./CountTotalByYear";
 
 function App() {
   return (
@@ -85,49 +85,49 @@ function App() {
 function Home() {
   return (
     <div className="app_right">
-      <Charts />
+      <CountTotalByYear />
     </div>
   );
 }
 function CDU() {
   return (
     <div className="app_right">
-      <Twitts />
+      <Tweets party={"cdu"} />
     </div>
   );
 }
 function SPD() {
   return (
     <div className="app_right">
-      <Twitts />
+      <Tweets />
     </div>
   );
 }
 function AFD() {
   return (
     <div className="app_right">
-      <Twitts />
+      <Tweets />
     </div>
   );
 }
 function FDP() {
   return (
     <div className="app_right">
-      <Twitts />
+      <Tweets />
     </div>
   );
 }
 function LINKE() {
   return (
     <div className="app_right">
-      <Twitts />
+      <Tweets />
     </div>
   );
 }
 function GRÜN() {
   return (
     <div className="app_right">
-      <Twitts />
+      <Tweets />
     </div>
   );
 }
