@@ -29,6 +29,10 @@ import AverageReply from "./home_graphs/AverageReply";
 import Averagelikestweet from "./home_graphs/Averagelikestweet";
 import Mediausagetweets from "./home_graphs/Mediausagetweets";
 import MostUsedHashtags from "./cdu_graphs/MostUsedHashtags";
+//import MostUsedHashtagsCloud from "./home_graphs/MostUsedHashtagsCloud";
+import MostTweetsDay from "./cdu_graphs/MostTweetsDay";
+import MostTweetsTime from "./cdu_graphs/MostTweetsTime";
+import MostActiveUser from "./cdu_graphs/MostActiveUser";
 
 function App() {
   return (
@@ -94,10 +98,10 @@ function Home() {
   return (
     <div className="app_right">
       <CountTotalByYear />
-
       <AverageReply />
       <Averagelikestweet />
       <Mediausagetweets />
+      {/* <MostUsedHashtags /> */}
     </div>
   );
 }
@@ -105,45 +109,28 @@ function CDU() {
   return (
     <div className="app_right">
       <CDUGraphs />
-      <Tweets party={"cdu"} />
+      {/* <Tweets party={"cdu"} /> */}
       <MostUsedHashtags />
+      <MostTweetsDay />
+      <MostTweetsTime />
+      <MostActiveUser />
     </div>
   );
 }
 function SPD() {
-  return (
-    <div className="app_right">
-      <Tweets />
-    </div>
-  );
+  return <div className="app_right">{/* <Tweets /> */}</div>;
 }
 function AFD() {
-  return (
-    <div className="app_right">
-      <Tweets />
-    </div>
-  );
+  return <div className="app_right">{/* <Tweets /> */}</div>;
 }
 function FDP() {
-  return (
-    <div className="app_right">
-      <Tweets />
-    </div>
-  );
+  return <div className="app_right">{/* <Tweets /> */}</div>;
 }
 function LINKE() {
-  return (
-    <div className="app_right">
-      <Tweets />
-    </div>
-  );
+  return <div className="app_right">{/* <Tweets /> */}</div>;
 }
 function GRÜN() {
-  return (
-    <div className="app_right">
-      <Tweets />
-    </div>
-  );
+  return <div className="app_right">{/* <Tweets /> */}</div>;
 }
 
 export default App;
