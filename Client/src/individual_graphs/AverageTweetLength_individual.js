@@ -9,7 +9,7 @@ const options = {
     display: false,
   },
 };
-function CDUGraphs() {
+function AverageTweetLength_individual() {
   const [averageTweets, setAverageTweets] = useState(0);
 
   useEffect(() => {
@@ -79,4 +79,4 @@ function CDUGraphs() {
   );
 }
 
-export default CDUGraphs;
+export default AverageTweetLength_individual;
