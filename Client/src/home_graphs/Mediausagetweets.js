@@ -80,7 +80,7 @@ function Mediausagetweets() {
                 borderColor: "rgba(75, 192, 192, 0.4)",
               },
               {
-                label: "Grün",
+                label: "Grüne",
                 fill: false,
                 data: [
                   gruen[2017],

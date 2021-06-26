@@ -81,7 +81,7 @@ function Averagelikestweet() {
                 borderColor: "rgba(75, 192, 192)",
               },
               {
-                label: "Grün",
+                label: "Grüne",
                 fill: false,
                 data: [
                   gruen[2017],
@@ -94,7 +94,7 @@ function Averagelikestweet() {
                 borderColor: "rgba(153, 102, 255)",
               },
               {
-                label: "SPd",
+                label: "SPD",
                 fill: false,
                 data: [spd[2017], spd[2018], spd[2019], spd[2020], spd[2021]],
                 backgroundColor: "rgba(255, 159, 64, 0.4)",

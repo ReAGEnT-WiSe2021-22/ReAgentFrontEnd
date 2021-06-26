@@ -18,23 +18,7 @@ function AverageLikesTweets_cdu({ party }) {
           return response.json();
         })
         .then((data) => {
-          if (party == "cdu") {
-            setD(data[0].CDU);
-          } else if (party == "spd") {
-            setD(data[5].SPD);
-          } else if (party == "linke") {
-            setD(data[1].Linke);
-          } else if (party == "fdp") {
-            setD(data[2].FDP);
-          } else if (party == "afd") {
-            setD(data[3].AfD);
-          } else if (party == "gruen") {
-            setD(data[4].B90);
-          } else if (party == "csu") {
-            setD(data[6].CSU);
-          } else if (party == "parteilos") {
-            setD(data[7].Parteilos);
-          }
+          setD(data[Object.keys(party)][Object.values(party)[0]]);
         });
     };
     fetchData();

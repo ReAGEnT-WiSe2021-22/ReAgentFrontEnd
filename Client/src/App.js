@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from "react";
 import "@material-ui/core";
 import {
@@ -33,7 +34,7 @@ import MostUsedHashtags from "./individual_graphs/MostUsedHashtags";
 import MostTweetsDay from "./individual_graphs/MostTweetsDay";
 import MostTweetsTime from "./individual_graphs/MostTweetsTime";
 import MostActiveUser from "./individual_graphs/MostActiveUser";
-import CountTotalByMounth_individual from "./individual_graphs/CountTotalByMounth_individual";
+import CountTotalByMonth_individual from "./individual_graphs/CountTotalByMonth_individual";
 import AverageReply_individual from "./individual_graphs/AverageReply_individual";
 import AverageLikesTweets_individual from "./individual_graphs/AverageLikesTweets_individual";
 import MedienausageTweets_individual from "./individual_graphs/MedienausageTweets_individual";
@@ -64,8 +65,8 @@ function App() {
             <ListItem component={Link} to="/LINKE">
               <ListItem button>LINKE</ListItem>
             </ListItem>
-            <ListItem component={Link} to="/GRÜN">
-              <ListItem button>GRÜN</ListItem>
+            <ListItem component={Link} to="/GRÜNE">
+              <ListItem button>GRÜNE</ListItem>
             </ListItem>
             <ListItem component={Link} to="/CSU">
               <ListItem button>CSU</ListItem>
@@ -95,8 +96,8 @@ function App() {
           <Route path="/LINKE">
             <LINKE />
           </Route>
-          <Route path="/GRÜN">
-            <GRÜN />
+          <Route path="/GRÜNE">
+            <GRÜNE />
           </Route>
           <Route path="/CSU">
             <CSU />
@@ -109,6 +110,18 @@ function App() {
     </div>
   );
 }
+
+let parties = {
+  AfD: { 0: "AfD" },
+  B90: { 1: "B90" },
+  CDU: { 2: "CDU" },
+  CSU: { 3: "CSU" },
+  FDP: { 4: "FDP" },
+  Linke: { 5: "Linke" },
+  Parteilos: { 6: "Parteilos" },
+  SPD: { 7: "SPD" },
+};
+
 function Home() {
   //<AverageTweetLength />
 
@@ -130,11 +143,11 @@ function CDU() {
       <MostTweetsDay />
       <MostTweetsTime />
       <MostActiveUser />
-      <CountTotalByMounth_individual party={"cdu"} />
-      <AverageReply_individual party={"cdu"} />
-      <AverageLikesTweets_individual party={"cdu"} />
-      <MedienausageTweets_individual party={"cdu"} />
-      <AverageTweetLength_individual party={"cdu"} />
+      <CountTotalByMonth_individual party={parties.CDU} />
+      <AverageReply_individual party={parties.CDU} />
+      <AverageLikesTweets_individual party={parties.CDU} />
+      <MedienausageTweets_individual party={parties.CDU} />
+      <AverageTweetLength_individual party={parties.CDU} />
     </div>
   );
 }
@@ -142,11 +155,11 @@ function SPD() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"spd"} />
-      <AverageReply_individual party={"spd"} />
-      <AverageLikesTweets_individual party={"spd"} />
-      <MedienausageTweets_individual party={"spd"} />
-      <AverageTweetLength_individual party={"spd"} />
+      <CountTotalByMonth_individual party={parties.SPD} />
+      <AverageReply_individual party={parties.SPD} />
+      <AverageLikesTweets_individual party={parties.SPD} />
+      <MedienausageTweets_individual party={parties.SPD} />
+      <AverageTweetLength_individual party={parties.SPD} />
     </div>
   );
 }
@@ -154,11 +167,11 @@ function AFD() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <MedienausageTweets_individual party={"afd"} />
-      <CountTotalByMounth_individual party={"afd"} />
-      <AverageReply_individual party={"afd"} />
-      <AverageLikesTweets_individual party={"afd"} />
-      <AverageTweetLength_individual party={"afd"} />
+      <CountTotalByMonth_individual party={parties.AfD} />
+      <AverageReply_individual party={parties.AfD} />
+      <AverageLikesTweets_individual party={parties.AfD} />
+      <MedienausageTweets_individual party={parties.AfD} />
+      <AverageTweetLength_individual party={parties.AfD} />
     </div>
   );
 }
@@ -166,11 +179,11 @@ function FDP() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <MedienausageTweets_individual party={"fdp"} />
-      <CountTotalByMounth_individual party={"fdp"} />
-      <AverageReply_individual party={"fdp"} />
-      <AverageLikesTweets_individual party={"fdp"} />
-      <AverageTweetLength_individual party={"fdp"} />
+      <CountTotalByMonth_individual party={parties.FDP} />
+      <AverageReply_individual party={parties.FDP} />
+      <AverageLikesTweets_individual party={parties.FDP} />
+      <MedienausageTweets_individual party={parties.FDP} />
+      <AverageTweetLength_individual party={parties.FDP} />
     </div>
   );
 }
@@ -178,23 +191,23 @@ function LINKE() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"linke"} />
-      <AverageReply_individual party={"linke"} />
-      <AverageLikesTweets_individual party={"linke"} />
-      <MedienausageTweets_individual party={"linke"} />
-      <AverageTweetLength_individual party={"linke"} />
+      <CountTotalByMonth_individual party={parties.Linke} />
+      <AverageReply_individual party={parties.Linke} />
+      <AverageLikesTweets_individual party={parties.Linke} />
+      <MedienausageTweets_individual party={parties.Linke} />
+      <AverageTweetLength_individual party={parties.CDU} />
     </div>
   );
 }
-function GRÜN() {
+function GRÜNE() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"gruen"} />
-      <AverageReply_individual party={"gruen"} />
-      <AverageLikesTweets_individual party={"gruen"} />
-      <MedienausageTweets_individual party={"gruen"} />
-      <AverageTweetLength_individual party={"gruen"} />
+      <CountTotalByMonth_individual party={parties.B90} />
+      <AverageReply_individual party={parties.B90} />
+      <AverageLikesTweets_individual party={parties.B90} />
+      <MedienausageTweets_individual party={parties.B90} />
+      <AverageTweetLength_individual party={parties.B90} />
     </div>
   );
 }
@@ -202,11 +215,11 @@ function CSU() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"csu"} />
-      <AverageReply_individual party={"csu"} />
-      <AverageLikesTweets_individual party={"csu"} />
-      <MedienausageTweets_individual party={"csu"} />
-      <AverageTweetLength_individual party={"csu"} />
+      <CountTotalByMonth_individual party={parties.CSU} />
+      <AverageReply_individual party={parties.CSU} />
+      <AverageLikesTweets_individual party={parties.CSU} />
+      <MedienausageTweets_individual party={parties.CSU} />
+      <AverageTweetLength_individual party={parties.CSU} />
     </div>
   );
 }
@@ -214,11 +227,11 @@ function Parteilos() {
   return (
     <div className="app_right">
       {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"parteilos"} />
-      <AverageReply_individual party={"parteilos"} />
-      <AverageLikesTweets_individual party={"parteilos"} />
-      <MedienausageTweets_individual party={"parteilos"} />
-      <AverageTweetLength_individual party={"parteilos"} />
+      <CountTotalByMonth_individual party={parties.Parteilos} />
+      <AverageReply_individual party={parties.Parteilos} />
+      <AverageLikesTweets_individual party={parties.Parteilos} />
+      <MedienausageTweets_individual party={parties.Parteilos} />
+      <AverageTweetLength_individual party={parties.Parteilos} />
     </div>
   );
 }

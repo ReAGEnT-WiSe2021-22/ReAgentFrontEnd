@@ -72,7 +72,7 @@ function CountTotalByYear() {
                 backgroundColor: "rgba(75, 192, 192, 0.4)",
               },
               {
-                label: "Grün",
+                label: "Grüne",
                 data: [
                   gruen[2017],
                   gruen[2018],
