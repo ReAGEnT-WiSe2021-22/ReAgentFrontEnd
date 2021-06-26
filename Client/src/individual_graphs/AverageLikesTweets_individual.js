@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 const options = {
   title: {
     display: true,

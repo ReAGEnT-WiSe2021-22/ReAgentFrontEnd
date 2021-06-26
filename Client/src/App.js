@@ -1,15 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { Component } from "react";
 import "@material-ui/core";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { ListItem } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -139,15 +131,16 @@ function CDU() {
   return (
     <div className="app_right">
       {/* <Tweets party={"cdu"} /> */}
-      <MostUsedHashtags />
-      <MostTweetsDay />
-      <MostTweetsTime />
-      <MostActiveUser />
       <CountTotalByMonth_individual party={parties.CDU} />
       <AverageReply_individual party={parties.CDU} />
       <AverageLikesTweets_individual party={parties.CDU} />
       <MedienausageTweets_individual party={parties.CDU} />
       <AverageTweetLength_individual party={parties.CDU} />
+
+      <MostUsedHashtags party={parties.CDU} />
+      <MostTweetsDay party={parties.CDU} />
+      <MostTweetsTime party={parties.CDU} />
+      <MostActiveUser party={parties.CDU} />
     </div>
   );
 }
@@ -160,6 +153,11 @@ function SPD() {
       <AverageLikesTweets_individual party={parties.SPD} />
       <MedienausageTweets_individual party={parties.SPD} />
       <AverageTweetLength_individual party={parties.SPD} />
+
+      <MostUsedHashtags party={parties.SPD} />
+      <MostTweetsDay party={parties.SPD} />
+      <MostTweetsTime party={parties.SPD} />
+      <MostActiveUser party={parties.SPD} />
     </div>
   );
 }
@@ -172,6 +170,11 @@ function AFD() {
       <AverageLikesTweets_individual party={parties.AfD} />
       <MedienausageTweets_individual party={parties.AfD} />
       <AverageTweetLength_individual party={parties.AfD} />
+
+      <MostUsedHashtags party={parties.AfD} />
+      <MostTweetsDay party={parties.AfD} />
+      <MostTweetsTime party={parties.AfD} />
+      <MostActiveUser party={parties.AfD} />
     </div>
   );
 }
@@ -184,6 +187,11 @@ function FDP() {
       <AverageLikesTweets_individual party={parties.FDP} />
       <MedienausageTweets_individual party={parties.FDP} />
       <AverageTweetLength_individual party={parties.FDP} />
+
+      <MostUsedHashtags party={parties.FDP} />
+      <MostTweetsDay party={parties.FDP} />
+      <MostTweetsTime party={parties.FDP} />
+      <MostActiveUser party={parties.FDP} />
     </div>
   );
 }
@@ -196,6 +204,11 @@ function LINKE() {
       <AverageLikesTweets_individual party={parties.Linke} />
       <MedienausageTweets_individual party={parties.Linke} />
       <AverageTweetLength_individual party={parties.CDU} />
+
+      <MostUsedHashtags party={parties.Linke} />
+      <MostTweetsDay party={parties.Linke} />
+      <MostTweetsTime party={parties.Linke} />
+      <MostActiveUser party={parties.Linke} />
     </div>
   );
 }
@@ -208,6 +221,11 @@ function GRÜNE() {
       <AverageLikesTweets_individual party={parties.B90} />
       <MedienausageTweets_individual party={parties.B90} />
       <AverageTweetLength_individual party={parties.B90} />
+
+      <MostUsedHashtags party={parties.B90} />
+      <MostTweetsDay party={parties.B90} />
+      <MostTweetsTime party={parties.B90} />
+      <MostActiveUser party={parties.B90} />
     </div>
   );
 }
@@ -220,6 +238,11 @@ function CSU() {
       <AverageLikesTweets_individual party={parties.CSU} />
       <MedienausageTweets_individual party={parties.CSU} />
       <AverageTweetLength_individual party={parties.CSU} />
+
+      <MostUsedHashtags party={parties.CSU} />
+      <MostTweetsDay party={parties.CSU} />
+      <MostTweetsTime party={parties.CSU} />
+      <MostActiveUser party={parties.CSU} />
     </div>
   );
 }
@@ -232,6 +255,11 @@ function Parteilos() {
       <AverageLikesTweets_individual party={parties.Parteilos} />
       <MedienausageTweets_individual party={parties.Parteilos} />
       <AverageTweetLength_individual party={parties.Parteilos} />
+
+      <MostUsedHashtags party={parties.Parteilos} />
+      <MostTweetsDay party={parties.Parteilos} />
+      <MostTweetsTime party={parties.Parteilos} />
+      <MostActiveUser party={parties.Parteilos} />
     </div>
   );
 }

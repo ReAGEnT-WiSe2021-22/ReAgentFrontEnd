@@ -1,48 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
-import ReactWordcloud from "react-wordcloud";
+import { Bar } from "react-chartjs-2";
 
 const options = {
   title: {
     display: true,
-    text: "Most tweets day",
+    text: "Most tweets day (2021)",
   },
   legend: {
     display: false,
   },
 };
 
-function MostTweetsDay() {
+function MostTweetsDay({ party }) {
   const [vals, setVals] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/mosttweetsday/CDU")
+      let party_val = Object.values(party)[0];
+
+      await fetch(
+        "http://reagent1.f4.htw-berlin.de:8080/mosttweetsday/" + party_val
+      )
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          console.log("----------");
-          console.log(data[4][2021][1]);
-          console.log("----------");
+          // console.log("----------");
+          // console.log(data[4][2021]);
+          // console.log("----------");
 
-          var keys = [];
-          var vals = [];
-
-          for (let i = 1; i < 8; i++) {
-            for (var key in data[4][2021][i]) {
-              console.log("Key: " + key);
-              console.log("Value: " + data[4][2021][i][key]);
-              keys.push(key);
-              vals.push(data[4][2021][i][key]);
-            }
-          }
+          var vals = [
+            JSON.parse(data[4][2021]["MONDAY"]),
+            JSON.parse(data[4][2021]["TUESDAY"]),
+            JSON.parse(data[4][2021]["WEDNESDAY"]),
+            JSON.parse(data[4][2021]["THURSDAY"]),
+            JSON.parse(data[4][2021]["FRIDAY"]),
+            JSON.parse(data[4][2021]["SATURDAY"]),
+            JSON.parse(data[4][2021]["SUNDAY"]),
+          ];
 
           setVals(vals);
         });
     };
     fetchData();
-  }, []);
+  }, [party]);
 
   return (
     <div className="charts">
