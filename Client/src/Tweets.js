@@ -1,49 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
 import TweetEmbed from "react-tweet-embed";
 
+function buildList(data) {
+  var list = [];
+  console.log(data);
+  for (var i in data) {
+    list.push(data[i]);
+  }
+  return list;
+}
+
 function Tweets({ party }) {
-  //const [id, setID] = useState(0);
-  const [cdu, setCDU] = useState(0);
-  const [spd, setSPD] = useState(0);
-  const [fdp, setFDP] = useState(0);
-  const [afd, setAFD] = useState(0);
-  const [linke, setLinke] = useState(0);
-  const [gruen, setGruen] = useState(0);
-  const [csu, setCSU] = useState(0);
-  const [parteilos, setParteilos] = useState(0);
-  var cduData = [];
+  const [d, setD] = useState([0]);
+
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("")
+      var p = Object.values(party);
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/" + p)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
-          for (let d in data) {
-            if (data[d].party == "cdu") {
-              cduData.push(data[d].id);
-            }
-          }
-          setCDU(cduData);
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
         });
     };
     fetchData();
   }, [party]);
 
-  if (party == "cdu") {
-    return (
-      // map through cdu and create tweets for each if
-      <div>
-        <TweetEmbed id={cdu} />
-      </div>
-    );
-  }
+  console.log(d);
+
   return (
-    <div>
-      <TweetEmbed id="1391326610691956736" />
-      <TweetEmbed id="1391326642056962049" />
-      <TweetEmbed id="1391326634452606976" />
+    <div className="tweets">
+      {d.map((ids) => (
+        <TweetEmbed id={ids} />
+      ))}
     </div>
   );
 }

@@ -40,24 +40,44 @@ a {
 .nevigation {
   margin-top: 65px;
 }
+.home_right {
+  /* display: inline-table;
+  justify-content: space-between;
+  margin-left: 500px;
+  padding-left: 20px;
+  width: 100%;*/
+  margin-left: 300px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  /*width: 500px;*/
+}
 .app_right {
   margin-left: 300px;
   padding-left: 20px;
-}
-.test {
-  margin-top: 40px;
-  width: 350px;
-  height: 260px;
-}
-.twitts {
-  margin-top: 40px;
-  width: 350px;
-  height: 260px;
+  display: flex;
 }
 .charts {
-  margin-top: 40px;
+  margin-top: 10px;
   width: 500px;
-  height: 260px;
+  height: 300px;
+}
+
+.left {
+  width: 300px;
+  display: flex;
+}
+.right {
+  /*padding-top: 0%;
+  padding-left: 300px;
+  width: 600px;
+  height: 700px;*/
+  padding-left: 100px;
+  height: 100%;
 }
 
 /** 

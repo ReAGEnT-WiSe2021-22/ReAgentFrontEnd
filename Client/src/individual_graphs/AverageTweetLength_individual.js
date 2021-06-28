@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
@@ -9,71 +10,39 @@ const options = {
     display: false,
   },
 };
-function AverageTweetLength_individual() {
-  const [averageTweets, setAverageTweets] = useState(0);
-
+function AverageTweetLength_individual({ party }) {
+  const [d, setD] = useState(0);
   useEffect(() => {
-    /*const fetchData = async () => {
-          await fetch("http://reagent1.f4.htw-berlin.de:9191/averagetweetlength")
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              //console.log(data[CDU][2017]);
-              setD(data);
-            });
-        };
-        fetchData();*/
-
-    var dum = [
-      {
-        "01": 523,
-        "02": 619,
-        "03": 760,
-        "04": 923,
-        "05": 57,
-        "06": 234,
-        "07": 123,
-        "08": 653,
-        "09": 77,
-        10: 863,
-        11: 485,
-        12: 263,
-      },
-    ];
-    setAverageTweets(dum[0]);
-  }, []);
-
-  console.log(averageTweets);
-
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/averagelikestweet")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setD(data[Object.keys(party)][Object.values(party)[0]]);
+        });
+    };
+    fetchData();
+  }, [party]);
   return (
     <div className="charts">
       {
-        <Bar
-          data={{
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-            datasets: [
-              {
-                data: [
-                  averageTweets["01"],
-                  averageTweets["02"],
-                  averageTweets["03"],
-                  averageTweets["04"],
-                  averageTweets["05"],
-                  averageTweets["06"],
-                  averageTweets["07"],
-                  averageTweets["08"],
-                  averageTweets["09"],
-                  averageTweets["10"],
-                  averageTweets["11"],
-                  averageTweets["12"],
-                ],
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-              },
-            ],
-          }}
-          options={options}
-        />
+        <Card>
+          <Line
+            data={{
+              labels: [2017, 2018, 2019, 2020, 2021],
+              datasets: [
+                {
+                  fill: false,
+                  data: [d[2017], d[2018], d[2019], d[2020], d[2021]],
+                  backgroundColor: "rgba(54, 162, 235, 0.4)",
+                  borderColor: "rgba(54, 162, 235)",
+                },
+              ],
+            }}
+            options={options}
+          />
+        </Card>
       }
     </div>
   );

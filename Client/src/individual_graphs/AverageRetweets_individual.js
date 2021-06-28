@@ -1,0 +1,51 @@
+import React, { useEffect, useState } from "react";
+import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { Card } from "@material-ui/core";
+const options = {
+  title: {
+    display: true,
+    text: "Average Retweets",
+  },
+  legend: {
+    display: false,
+  },
+};
+function AverageRetweets_individual({ party }) {
+  const [d, setD] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/averagelikestweet")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setD(data[Object.keys(party)][Object.values(party)[0]]);
+        });
+    };
+    fetchData();
+  }, [party]);
+  return (
+    <div className="charts">
+      {
+        <Card>
+          <Line
+            data={{
+              labels: [2017, 2018, 2019, 2020, 2021],
+              datasets: [
+                {
+                  fill: false,
+                  data: [d[2017], d[2018], d[2019], d[2020], d[2021]],
+                  backgroundColor: "rgba(54, 162, 235, 0.4)",
+                  borderColor: "rgba(54, 162, 235)",
+                },
+              ],
+            }}
+            options={options}
+          />
+        </Card>
+      }
+    </div>
+  );
+}
+
+export default AverageRetweets_individual;

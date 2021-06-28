@@ -8,6 +8,8 @@ import {
   CardContent,
   Typography,
   Button,
+  Grid,
+  Paper,
 } from "@material-ui/core";
 import {
   BrowserRouter as Router,
@@ -28,17 +30,24 @@ import AverageTweetLength from "./home_graphs/AverageTweetLength";
 import AverageReply from "./home_graphs/AverageReply";
 import Averagelikestweet from "./home_graphs/Averagelikestweet";
 import Mediausagetweets from "./home_graphs/Mediausagetweets";
+import AverageRetweets from "./home_graphs/AverageRetweets";
+import TotalReplies from "./home_graphs/TotalReplies";
 // individual graphs
 import MostUsedHashtags from "./individual_graphs/MostUsedHashtags";
 import MostTweetsDay from "./individual_graphs/MostTweetsDay";
 import MostTweetsTime from "./individual_graphs/MostTweetsTime";
 import MostActiveUser from "./individual_graphs/MostActiveUser";
-import CountTotalByMounth_individual from "./individual_graphs/CountTotalByMounth_individual";
+import CountTotalByMonth_individual from "./individual_graphs/CountTotalByMonth_individual";
 import AverageReply_individual from "./individual_graphs/AverageReply_individual";
 import AverageLikesTweets_individual from "./individual_graphs/AverageLikesTweets_individual";
 import MedienausageTweets_individual from "./individual_graphs/MedienausageTweets_individual";
 import AverageTweetLength_individual from "./individual_graphs/AverageTweetLength_individual";
-
+import AverageRetweets_individual from "./individual_graphs/AverageRetweets_individual";
+import TotalReplies_individual from "./individual_graphs/TotalReplies_individual";
+import LiveMediaUsage from "./individual_graphs_live/LiveMediaUsage";
+import LiveSentiment from "./individual_graphs_live/LiveSentiment";
+import LiveCountTotalTweets from "./individual_graphs_live/LiveCountTotalTweets";
+import WordCloud from "./individual_graphs/WordCloud";
 function App() {
   return (
     <div className="app">
@@ -64,7 +73,7 @@ function App() {
             <ListItem component={Link} to="/LINKE">
               <ListItem button>LINKE</ListItem>
             </ListItem>
-            <ListItem component={Link} to="/GRÜN">
+            <ListItem component={Link} to="/GRÜNE">
               <ListItem button>GRÜN</ListItem>
             </ListItem>
             <ListItem component={Link} to="/CSU">
@@ -95,8 +104,8 @@ function App() {
           <Route path="/LINKE">
             <LINKE />
           </Route>
-          <Route path="/GRÜN">
-            <GRÜN />
+          <Route path="/GRÜNE">
+            <GRÜNE />
           </Route>
           <Route path="/CSU">
             <CSU />
@@ -109,14 +118,39 @@ function App() {
     </div>
   );
 }
+let parties = {
+  AfD: { 0: "AfD" },
+  B90: { 1: "B90" },
+  CDU: { 2: "CDU" },
+  CSU: { 3: "CSU" },
+  FDP: { 4: "FDP" },
+  Linke: { 5: "Linke" },
+  Parteilos: { 6: "Parteilos" },
+  SPD: { 7: "SPD" },
+};
+const styles = (theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+});
 function Home() {
-  //<AverageTweetLength />
+  //
 
   return (
-    <div className="app_right">
+    <div className="home_right">
       <CountTotalByYear />
+      <TotalReplies />
+
       <AverageReply />
+      <AverageRetweets />
       <Averagelikestweet />
+      <AverageTweetLength />
+
       <Mediausagetweets />
       {/* <MostUsedHashtags /> */}
     </div>
@@ -125,100 +159,224 @@ function Home() {
 function CDU() {
   return (
     <div className="app_right">
-      {/* <Tweets party={"cdu"} /> */}
-      <MostUsedHashtags />
-      <MostTweetsDay />
-      <MostTweetsTime />
-      <MostActiveUser />
-      <CountTotalByMounth_individual party={"cdu"} />
-      <AverageReply_individual party={"cdu"} />
-      <AverageLikesTweets_individual party={"cdu"} />
-      <MedienausageTweets_individual party={"cdu"} />
-      <AverageTweetLength_individual party={"cdu"} />
+      <div className="left">
+        <Tweets party={parties.CDU} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.CDU} />
+        <LiveSentiment party={parties.CDU} />
+        <LiveCountTotalTweets party={parties.CDU} />
+
+        <CountTotalByMonth_individual party={parties.CDU} />
+        <TotalReplies_individual party={parties.CDU} />
+        <MedienausageTweets_individual party={parties.CDU} />
+
+        <AverageReply_individual party={parties.CDU} />
+        <AverageLikesTweets_individual party={parties.CDU} />
+        <AverageTweetLength_individual party={parties.CDU} />
+        <AverageRetweets_individual party={parties.CDU} />
+
+        <MostUsedHashtags party={parties.CDU} />
+        <MostTweetsDay party={parties.CDU} />
+        <MostTweetsTime party={parties.CDU} />
+        <MostActiveUser party={parties.CDU} />
+      </div>
     </div>
   );
 }
 function SPD() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"spd"} />
-      <AverageReply_individual party={"spd"} />
-      <AverageLikesTweets_individual party={"spd"} />
-      <MedienausageTweets_individual party={"spd"} />
-      <AverageTweetLength_individual party={"spd"} />
+      <div className="left">
+        <Tweets party={parties.SPD} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.SPD} />
+        <LiveSentiment party={parties.SPD} />
+        <LiveCountTotalTweets party={parties.SPD} />
+
+        <CountTotalByMonth_individual party={parties.SPD} />
+        <TotalReplies_individual party={parties.SPD} />
+        <MedienausageTweets_individual party={parties.SPD} />
+
+        <AverageReply_individual party={parties.SPD} />
+        <AverageLikesTweets_individual party={parties.SPD} />
+        <AverageTweetLength_individual party={parties.SPD} />
+        <MedienausageTweets_individual party={parties.SPD} />
+
+        <MostUsedHashtags party={parties.SPD} />
+        <MostTweetsDay party={parties.SPD} />
+        <MostTweetsTime party={parties.SPD} />
+        <MostActiveUser party={parties.SPD} />
+      </div>
     </div>
   );
 }
 function AFD() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <MedienausageTweets_individual party={"afd"} />
-      <CountTotalByMounth_individual party={"afd"} />
-      <AverageReply_individual party={"afd"} />
-      <AverageLikesTweets_individual party={"afd"} />
-      <AverageTweetLength_individual party={"afd"} />
+      <div className="left">
+        <Tweets party={parties.AfD} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.AfD} />
+        <LiveSentiment party={parties.AfD} />
+        <LiveCountTotalTweets party={parties.AfD} />
+
+        <CountTotalByMonth_individual party={parties.AfD} />
+        <TotalReplies_individual party={parties.AfD} />
+        <MedienausageTweets_individual party={parties.AfD} />
+
+        <AverageReply_individual party={parties.AfD} />
+        <AverageLikesTweets_individual party={parties.AfD} />
+        <AverageTweetLength_individual party={parties.AfD} />
+        <AverageRetweets_individual party={parties.AfD} />
+
+        <MostUsedHashtags party={parties.AfD} />
+        <MostTweetsDay party={parties.AfD} />
+        <MostTweetsTime party={parties.AfD} />
+        <MostActiveUser party={parties.AfD} />
+      </div>
     </div>
   );
 }
 function FDP() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <MedienausageTweets_individual party={"fdp"} />
-      <CountTotalByMounth_individual party={"fdp"} />
-      <AverageReply_individual party={"fdp"} />
-      <AverageLikesTweets_individual party={"fdp"} />
-      <AverageTweetLength_individual party={"fdp"} />
+      <div className="left">
+        <Tweets party={parties.FDP} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.FDP} />
+        <LiveSentiment party={parties.FDP} />
+        <LiveCountTotalTweets party={parties.FDP} />
+
+        <CountTotalByMonth_individual party={parties.FDP} />
+        <TotalReplies_individual party={parties.FDP} />
+        <MedienausageTweets_individual party={parties.FDP} />
+
+        <AverageReply_individual party={parties.FDP} />
+        <AverageLikesTweets_individual party={parties.FDP} />
+        <AverageTweetLength_individual party={parties.FDP} />
+        <AverageRetweets_individual party={parties.FDP} />
+
+        <MostUsedHashtags party={parties.FDP} />
+        <MostTweetsDay party={parties.FDP} />
+        <MostTweetsTime party={parties.FDP} />
+        <MostActiveUser party={parties.FDP} />
+      </div>
     </div>
   );
 }
 function LINKE() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"linke"} />
-      <AverageReply_individual party={"linke"} />
-      <AverageLikesTweets_individual party={"linke"} />
-      <MedienausageTweets_individual party={"linke"} />
-      <AverageTweetLength_individual party={"linke"} />
+      <div className="left">
+        <Tweets party={parties.Linke} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.Linke} />
+        <LiveSentiment party={parties.Linke} />
+        <LiveCountTotalTweets party={parties.Linke} />
+
+        <CountTotalByMonth_individual party={parties.Linke} />
+        <TotalReplies_individual party={parties.Linke} />
+        <MedienausageTweets_individual party={parties.Linke} />
+
+        <AverageReply_individual party={parties.Linke} />
+        <AverageLikesTweets_individual party={parties.Linke} />
+        <AverageTweetLength_individual party={parties.CDU} />
+        <AverageRetweets_individual party={parties.Linke} />
+
+        <MostUsedHashtags party={parties.Linke} />
+        <MostTweetsDay party={parties.Linke} />
+        <MostTweetsTime party={parties.Linke} />
+        <MostActiveUser party={parties.Linke} />
+      </div>
     </div>
   );
 }
-function GRÜN() {
+function GRÜNE() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"gruen"} />
-      <AverageReply_individual party={"gruen"} />
-      <AverageLikesTweets_individual party={"gruen"} />
-      <MedienausageTweets_individual party={"gruen"} />
-      <AverageTweetLength_individual party={"gruen"} />
+      <div className="left">
+        <Tweets party={parties.B90} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.B90} />
+        <LiveSentiment party={parties.B90} />
+        <LiveCountTotalTweets party={parties.B90} />
+
+        <CountTotalByMonth_individual party={parties.B90} />
+        <TotalReplies_individual party={parties.B90} />
+        <MedienausageTweets_individual party={parties.B90} />
+
+        <AverageReply_individual party={parties.B90} />
+        <AverageLikesTweets_individual party={parties.B90} />
+        <AverageTweetLength_individual party={parties.B90} />
+        <AverageRetweets_individual party={parties.B90} />
+
+        <MostUsedHashtags party={parties.B90} />
+        <MostTweetsDay party={parties.B90} />
+        <MostTweetsTime party={parties.B90} />
+        <MostActiveUser party={parties.B90} />
+      </div>
     </div>
   );
 }
 function CSU() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"csu"} />
-      <AverageReply_individual party={"csu"} />
-      <AverageLikesTweets_individual party={"csu"} />
-      <MedienausageTweets_individual party={"csu"} />
-      <AverageTweetLength_individual party={"csu"} />
+      <div className="left">
+        <Tweets party={parties.CSU} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.CSU} />
+        <LiveSentiment party={parties.CSU} />
+        <LiveCountTotalTweets party={parties.CSU} />
+
+        <CountTotalByMonth_individual party={parties.CSU} />
+        <TotalReplies_individual party={parties.CSU} />
+        <MedienausageTweets_individual party={parties.CSU} />
+
+        <AverageReply_individual party={parties.CSU} />
+        <AverageLikesTweets_individual party={parties.CSU} />
+        <AverageTweetLength_individual party={parties.CSU} />
+        <AverageRetweets_individual party={parties.CSU} />
+
+        <MostUsedHashtags party={parties.CSU} />
+        <MostTweetsDay party={parties.CSU} />
+        <MostTweetsTime party={parties.CSU} />
+        <MostActiveUser party={parties.CSU} />
+      </div>
     </div>
   );
 }
 function Parteilos() {
   return (
     <div className="app_right">
-      {/* <Tweets /> */}
-      <CountTotalByMounth_individual party={"parteilos"} />
-      <AverageReply_individual party={"parteilos"} />
-      <AverageLikesTweets_individual party={"parteilos"} />
-      <MedienausageTweets_individual party={"parteilos"} />
-      <AverageTweetLength_individual party={"parteilos"} />
+      <div className="left">
+        <Tweets party={parties.Parteilos} />
+      </div>
+      <div className="right">
+        <LiveMediaUsage party={parties.Parteilos} />
+        <LiveSentiment party={parties.Parteilos} />
+        <LiveCountTotalTweets party={parties.Parteilos} />
+
+        <CountTotalByMonth_individual party={parties.Parteilos} />
+        <TotalReplies_individual party={parties.Parteilos} />
+        <MedienausageTweets_individual party={parties.Parteilos} />
+
+        <AverageReply_individual party={parties.Parteilos} />
+        <AverageLikesTweets_individual party={parties.Parteilos} />
+        <AverageTweetLength_individual party={parties.Parteilos} />
+        <AverageRetweets_individual party={parties.Parteilos} />
+
+        <MostUsedHashtags party={parties.Parteilos} />
+        <MostTweetsDay party={parties.Parteilos} />
+        <MostTweetsTime party={parties.Parteilos} />
+        <MostActiveUser party={parties.Parteilos} />
+      </div>
     </div>
   );
 }
