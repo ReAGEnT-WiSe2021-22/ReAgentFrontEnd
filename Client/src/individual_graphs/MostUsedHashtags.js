@@ -15,10 +15,11 @@ const options = {
 function MostUsedHashtags({ party }) {
   const [vals, setVals] = useState([]);
   const [labels, setLabel] = useState([]);
+  const [color, setColor] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      let party_val = Object.values(party)[0];
+      let party_val = Object.values(party)[1];
 
       await fetch(
         "http://reagent1.f4.htw-berlin.de:8080/mostUsedHashtags/" + party_val
@@ -53,6 +54,7 @@ function MostUsedHashtags({ party }) {
           );
 
           setLabel(labels);
+          setColor(Object.values(party)[2] + Object.values(party)[3]);
         });
     };
     fetchData();
@@ -68,7 +70,8 @@ function MostUsedHashtags({ party }) {
               datasets: [
                 {
                   data: vals,
-                  backgroundColor: "rgba(54, 162, 235, 0.2)",
+                  backgroundColor: color,
+                  borderColor: color,
                 },
               ],
             }}

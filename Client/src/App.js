@@ -74,7 +74,7 @@ function App() {
               <ListItem button>LINKE</ListItem>
             </ListItem>
             <ListItem component={Link} to="/GRÜNE">
-              <ListItem button>GRÜN</ListItem>
+              <ListItem button>GRÜNE</ListItem>
             </ListItem>
             <ListItem component={Link} to="/CSU">
               <ListItem button>CSU</ListItem>
@@ -118,16 +118,18 @@ function App() {
     </div>
   );
 }
+
 let parties = {
-  AfD: { 0: "AfD" },
-  B90: { 1: "B90" },
-  CDU: { 2: "CDU" },
-  CSU: { 3: "CSU" },
-  FDP: { 4: "FDP" },
-  Linke: { 5: "Linke" },
-  Parteilos: { 6: "Parteilos" },
-  SPD: { 7: "SPD" },
+  AfD: [0, "AfD", "rgba(53, 185, 255,", "0.75)"],
+  B90: [1, "B90", "rgba(0, 255, 0,", "0.75)"],
+  CDU: [2, "CDU", "rgba(0, 0, 0,", "0.75)"],
+  CSU: [3, "CSU", "rgba(53, 61, 255,", "0.75)"],
+  FDP: [4, "FDP", "rgba(255, 255, 0,", "0.75)"],
+  Linke: [5, "Linke", "rgba(255, 0, 175,", "0.75)"],
+  Parteilos: [6, "Parteilos", "rgba(125, 125, 125,", "0.75)"],
+  SPD: [7, "SPD", "rgba(255, 0, 0,", "0.75)"],
 };
+
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
@@ -138,20 +140,19 @@ const styles = (theme) => ({
     color: theme.palette.text.secondary,
   },
 });
-function Home() {
-  //
 
+function Home() {
   return (
     <div className="home_right">
-      <CountTotalByYear />
-      <TotalReplies />
+      <CountTotalByYear parties={parties} />
+      <TotalReplies parties={parties} />
 
-      <AverageReply />
-      <AverageRetweets />
-      <Averagelikestweet />
-      <AverageTweetLength />
+      <AverageReply parties={parties} />
+      <AverageRetweets parties={parties} />
+      <Averagelikestweet parties={parties} />
+      <AverageTweetLength parties={parties} />
 
-      <Mediausagetweets />
+      <Mediausagetweets parties={parties} />
       {/* <MostUsedHashtags /> */}
     </div>
   );

@@ -15,11 +15,11 @@ const options = {
 function MostActiveUser({ party }) {
   const [vals, setVals] = useState([]);
   const [label, setLabel] = useState([]);
+  const [color, setColor] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      //let party_key = Object.keys(party);
-      let party_val = Object.values(party)[0];
+      let party_val = Object.values(party)[1];
 
       await fetch(
         "http://reagent1.f4.htw-berlin.de:8080/mostActiveUser/" + party_val
@@ -46,6 +46,7 @@ function MostActiveUser({ party }) {
 
           setLabel(keys);
           setVals(vals);
+          setColor(Object.values(party)[2] + Object.values(party)[3]);
         });
     };
     fetchData();
@@ -61,7 +62,8 @@ function MostActiveUser({ party }) {
               datasets: [
                 {
                   data: vals,
-                  backgroundColor: "rgba(54, 162, 235, 0.2)",
+                  backgroundColor: color, // 0.2
+                  borderColor: color,
                 },
               ],
             }}

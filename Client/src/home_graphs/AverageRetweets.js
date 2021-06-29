@@ -24,7 +24,7 @@ const options = {
     ],
   },
 };
-function AverageRetweets() {
+function AverageRetweets({ parties }) {
   const [cdu, setCDU] = useState(0);
   const [spd, setSPD] = useState(0);
   const [fdp, setFDP] = useState(0);
@@ -34,6 +34,8 @@ function AverageRetweets() {
   const [csu, setCSU] = useState(0);
   const [parteilos, setParteilos] = useState(0);
 
+  const [colorArr, setColorArr] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       await fetch("http://reagent1.f4.htw-berlin.de:8080/averageRetweetsTweet")
@@ -41,18 +43,28 @@ function AverageRetweets() {
           return response.json();
         })
         .then((data) => {
-          setCDU(data[0].AfD);
-          setLinke(data[1].B90);
-          setFDP(data[2].CDU);
-          setAfD(data[3].CSU);
-          setGruen(data[4].FDP);
-          setSPD(data[5].Linke);
-          setCSU(data[6].Parteilos);
-          setParteilos(data[7].SPD);
+          setAfD(data[0].AfD);
+          setGruen(data[1].B90);
+          setCDU(data[2].CDU);
+          setCSU(data[3].CSU);
+          setFDP(data[4].FDP);
+          setLinke(data[5].Linke);
+          setParteilos(data[6].Parteilos);
+          setSPD(data[7].SPD);
+
+          let colArr = [];
+
+          for (let i = 0; i < 8; i++) {
+            colArr.push(
+              Object.values(parties)[i][2] + Object.values(parties)[i][3]
+            );
+          }
+
+          setColorArr(colArr);
         });
     };
     fetchData();
-  }, []);
+  }, [parties]);
 
   return (
     <div className="charts">
@@ -65,28 +77,12 @@ function AverageRetweets() {
                 {
                   label: "CDU",
                   data: [cdu[2017], cdu[2018], cdu[2019], cdu[2020], cdu[2021]],
-                  backgroundColor: "rgba(54, 162, 235, 0.7)",
+                  backgroundColor: colorArr[2],
                 },
                 {
-                  label: "Linke",
-                  data: [
-                    linke[2017],
-                    linke[2018],
-                    linke[2019],
-                    linke[2020],
-                    linke[2021],
-                  ],
-                  backgroundColor: "rgba(255, 206, 86, 0.7)",
-                },
-                {
-                  label: "FDP",
-                  data: [fdp[2017], fdp[2018], fdp[2019], fdp[2020], fdp[2021]],
-                  backgroundColor: "rgba(55, 9, 232, 0.7)",
-                },
-                {
-                  label: "AfD",
-                  data: [afd[2017], afd[2018], afd[2019], afd[2020], afd[2021]],
-                  backgroundColor: "rgba(255, 32, 32, 0.7)",
+                  label: "SPD",
+                  data: [spd[2017], spd[2018], spd[2019], spd[2020], spd[2021]],
+                  backgroundColor: colorArr[7],
                 },
                 {
                   label: "Grüne",
@@ -97,17 +93,33 @@ function AverageRetweets() {
                     gruen[2020],
                     gruen[2021],
                   ],
-                  backgroundColor: "rgba(153, 102, 255, 0.7)",
+                  backgroundColor: colorArr[1],
                 },
                 {
-                  label: "SPD",
-                  data: [spd[2017], spd[2018], spd[2019], spd[2020], spd[2021]],
-                  backgroundColor: "rgba(255, 159, 64, 0.7)",
+                  label: "FDP",
+                  data: [fdp[2017], fdp[2018], fdp[2019], fdp[2020], fdp[2021]],
+                  backgroundColor: colorArr[4],
+                },
+                {
+                  label: "Linke",
+                  data: [
+                    linke[2017],
+                    linke[2018],
+                    linke[2019],
+                    linke[2020],
+                    linke[2021],
+                  ],
+                  backgroundColor: colorArr[5],
                 },
                 {
                   label: "CSU",
                   data: [csu[2017], csu[2018], csu[2019], csu[2020], csu[2021]],
-                  backgroundColor: "rgba(25, 255, 64, 0.7)",
+                  backgroundColor: colorArr[3],
+                },
+                {
+                  label: "AfD",
+                  data: [afd[2017], afd[2018], afd[2019], afd[2020], afd[2021]],
+                  backgroundColor: colorArr[0],
                 },
                 {
                   label: "Parteilos",
@@ -118,7 +130,7 @@ function AverageRetweets() {
                     parteilos[2020],
                     parteilos[2021],
                   ],
-                  backgroundColor: "rgba(200, 19, 224, 0.7)",
+                  backgroundColor: colorArr[6],
                 },
               ],
             }}

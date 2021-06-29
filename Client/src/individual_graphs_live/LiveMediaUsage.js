@@ -22,6 +22,8 @@ const options = {
 };
 function LiveMediaUsage({ party }) {
   const [d, setD] = useState(0);
+  const [color, setColor] = useState(0);
+
   useEffect(() => {
     const fetchData = async () => {
       await fetch("http://reagent1.f4.htw-berlin.de:8080/liveMediaUsage/month")
@@ -29,7 +31,8 @@ function LiveMediaUsage({ party }) {
           return response.json();
         })
         .then((data) => {
-          setD(data[Object.keys(party)][Object.values(party)[0]]);
+          setD(data[Object.values(party)[0]][Object.values(party)[1]]);
+          setColor(Object.values(party)[2] + Object.values(party)[3]);
         });
     };
     fetchData();
@@ -41,36 +44,8 @@ function LiveMediaUsage({ party }) {
           <Bar
             data={{
               labels: [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15,
-                16,
-                17,
-                18,
-                19,
-                20,
-                21,
-                22,
-                23,
-                24,
-                25,
-                26,
-                27,
-                28,
-                29,
-                30,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+                19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
               ],
               datasets: [
                 {
@@ -107,8 +82,8 @@ function LiveMediaUsage({ party }) {
                     d[29],
                     d[30],
                   ],
-                  backgroundColor: "rgba(54, 162, 235, 0.4)",
-                  borderColor: "rgba(54, 162, 235)",
+                  backgroundColor: color,
+                  borderColor: color,
                 },
               ],
             }}
