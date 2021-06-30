@@ -51,9 +51,9 @@ a {
   padding-left: 20px;
   padding-right: 20px;
 
-  display: grid;
+  /*display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 10px;*/
   /*width: 500px;*/
 }
 .app_right {
@@ -65,6 +65,44 @@ a {
   margin-top: 10px;
   width: 500px;
   height: 300px;
+}
+.home_tweets {
+  padding-top: 30px;
+}
+button.rec-dot {
+  background-color: #ffffff;
+  box-shadow: 0 0 1px 3px #1da1f2;
+}
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+  box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.rec.rec-arrow {
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 1px 3px #1da1f2;
+}
+.rec.rec-arrow:hover {
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 1px 3px #1da1f2;
+}
+
+.rec-arrow[disabled] {
+  transform: scale(0);
+}
+.rec-carousel-item:focus {
+  outline: none;
+  background-color: #ffffff;
+
+  box-shadow: inset 0 0 1px 1px lightgrey;
+}
+.home_charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding-top: 20px;
 }
 
 .left {

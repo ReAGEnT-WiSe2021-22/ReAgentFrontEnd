@@ -1,23 +1,8 @@
 import React from "react";
 import map from "./map.png";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "@material-ui/core";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { ListItem } from "@material-ui/core";
 import App from "./App";
 function Landing() {
   return (

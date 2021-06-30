@@ -1,29 +1,14 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "@material-ui/core";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Grid,
-  Paper,
-} from "@material-ui/core";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+import { ListItem } from "@material-ui/core";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
 import logo from "./logo.png";
-import map from "./map.png";
-import Tweets from "./Tweets";
+// import map from "./map.png";
+import Carousel from "react-elastic-carousel";
+
 // home_graphs
 import CountTotalByYear from "./home_graphs/CountTotalByYear";
 import AverageTweetLength from "./home_graphs/AverageTweetLength";
@@ -32,7 +17,10 @@ import Averagelikestweet from "./home_graphs/Averagelikestweet";
 import Mediausagetweets from "./home_graphs/Mediausagetweets";
 import AverageRetweets from "./home_graphs/AverageRetweets";
 import TotalReplies from "./home_graphs/TotalReplies";
+
 // individual graphs
+import Tweets from "./individual_graphs/Tweets";
+
 import MostUsedHashtags from "./individual_graphs/MostUsedHashtags";
 import MostTweetsDay from "./individual_graphs/MostTweetsDay";
 import MostTweetsTime from "./individual_graphs/MostTweetsTime";
@@ -47,7 +35,9 @@ import TotalReplies_individual from "./individual_graphs/TotalReplies_individual
 import LiveMediaUsage from "./individual_graphs_live/LiveMediaUsage";
 import LiveSentiment from "./individual_graphs_live/LiveSentiment";
 import LiveCountTotalTweets from "./individual_graphs_live/LiveCountTotalTweets";
-import WordCloud from "./individual_graphs/WordCloud";
+//import WordCloud from "./individual_graphs/WordCloud";
+import TweetEmbed from "react-tweet-embed";
+
 function App() {
   return (
     <div className="app">
@@ -129,30 +119,60 @@ let parties = {
   Parteilos: [6, "Parteilos", "rgba(125, 125, 125,", "0.75)"],
   SPD: [7, "SPD", "rgba(255, 0, 0,", "0.75)"],
 };
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
+];
 
-const styles = (theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-});
-
+function buildList(data) {
+  var list = [];
+  console.log(data);
+  for (var i in data) {
+    list.push(data[i]);
+  }
+  console.log(list);
+  return list;
+}
 function Home() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+          //setLoading(false); //stop loading when data is fetched
+        });
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="home_right">
-      <CountTotalByYear parties={parties} />
-      <TotalReplies parties={parties} />
+      <div className="home_tweets">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
+      <div className="home_charts">
+        <CountTotalByYear parties={parties} />
+        <TotalReplies parties={parties} />
 
-      <AverageReply parties={parties} />
-      <AverageRetweets parties={parties} />
-      <Averagelikestweet parties={parties} />
-      <AverageTweetLength parties={parties} />
+        <AverageReply parties={parties} />
+        <AverageRetweets parties={parties} />
+        <Averagelikestweet parties={parties} />
+        <AverageTweetLength parties={parties} />
 
-      <Mediausagetweets parties={parties} />
+        <Mediausagetweets parties={parties} />
+      </div>
+
       {/* <MostUsedHashtags /> */}
     </div>
   );

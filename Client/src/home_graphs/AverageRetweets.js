@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 
 const options = {
@@ -34,7 +34,7 @@ function AverageRetweets({ parties }) {
   const [csu, setCSU] = useState(0);
   const [parteilos, setParteilos] = useState(0);
 
-  const [colorArr, setColorArr] = useState([]);
+  //const [colorArr, setColorArr] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +52,7 @@ function AverageRetweets({ parties }) {
           setParteilos(data[6].Parteilos);
           setSPD(data[7].SPD);
 
-          let colArr = [];
+          /*let colArr = [];
 
           for (let i = 0; i < 8; i++) {
             colArr.push(
@@ -60,7 +60,7 @@ function AverageRetweets({ parties }) {
             );
           }
 
-          setColorArr(colArr);
+          setColorArr(colArr);*/
         });
     };
     fetchData();
@@ -77,12 +77,12 @@ function AverageRetweets({ parties }) {
                 {
                   label: "CDU",
                   data: [cdu[2017], cdu[2018], cdu[2019], cdu[2020], cdu[2021]],
-                  backgroundColor: colorArr[2],
+                  backgroundColor: "rgba(0, 0, 0, 0.75)",
                 },
                 {
                   label: "SPD",
                   data: [spd[2017], spd[2018], spd[2019], spd[2020], spd[2021]],
-                  backgroundColor: colorArr[7],
+                  backgroundColor: "rgba(255, 0, 0, 0.75)",
                 },
                 {
                   label: "Grüne",
@@ -93,12 +93,12 @@ function AverageRetweets({ parties }) {
                     gruen[2020],
                     gruen[2021],
                   ],
-                  backgroundColor: colorArr[1],
+                  backgroundColor: "rgba(0, 255, 0, 0.75)",
                 },
                 {
                   label: "FDP",
                   data: [fdp[2017], fdp[2018], fdp[2019], fdp[2020], fdp[2021]],
-                  backgroundColor: colorArr[4],
+                  backgroundColor: "rgba(255, 255, 0, 0.75)",
                 },
                 {
                   label: "Linke",
@@ -109,17 +109,17 @@ function AverageRetweets({ parties }) {
                     linke[2020],
                     linke[2021],
                   ],
-                  backgroundColor: colorArr[5],
+                  backgroundColor: "rgba(255, 0, 175, 0.75)",
                 },
                 {
                   label: "CSU",
                   data: [csu[2017], csu[2018], csu[2019], csu[2020], csu[2021]],
-                  backgroundColor: colorArr[3],
+                  backgroundColor: "rgba(53, 61, 255, 0.75)",
                 },
                 {
                   label: "AfD",
                   data: [afd[2017], afd[2018], afd[2019], afd[2020], afd[2021]],
-                  backgroundColor: colorArr[0],
+                  backgroundColor: "rgba(53, 185, 255, 0.75)",
                 },
                 {
                   label: "Parteilos",
@@ -130,7 +130,7 @@ function AverageRetweets({ parties }) {
                     parteilos[2020],
                     parteilos[2021],
                   ],
-                  backgroundColor: colorArr[6],
+                  backgroundColor: "rgba(125, 125, 125, 0.75)",
                 },
               ],
             }}

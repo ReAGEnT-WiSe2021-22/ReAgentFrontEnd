@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 const options = {
   title: {
@@ -10,16 +10,7 @@ const options = {
     display: false,
   },
 };
-var parties = {
-  AfD: { 0: "AfD" },
-  B90: { 1: "B90" },
-  CDU: { 2: "CDU" },
-  CSU: { 3: "CSU" },
-  FDP: { 4: "FDP" },
-  Linke: { 5: "Linke" },
-  Parteilos: { 6: "Parteilos" },
-  SPD: { 7: "SPD" },
-};
+
 function CountTotalByMonth_induvidual({ party }) {
   const [d, setD] = useState(0);
   const [color, setColor] = useState(0);
