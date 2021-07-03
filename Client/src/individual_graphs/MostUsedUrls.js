@@ -5,14 +5,14 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Most used hashtags (2021)",
+    text: "Most used URLs (2021)",
   },
   legend: {
     display: false,
   },
 };
 
-function MostUsedHashtags({ party }) {
+function MostUsedUrls({ party }) {
   const [vals, setVals] = useState([]);
   const [labels, setLabel] = useState([]);
   const [color, setColor] = useState(0);
@@ -22,7 +22,7 @@ function MostUsedHashtags({ party }) {
       let party_val = Object.values(party)[1];
 
       await fetch(
-        "http://reagent1.f4.htw-berlin.de:8080/mostUsedHashtags/" + party_val
+        "http://reagent1.f4.htw-berlin.de:8080/mostUsedUrls/" + party_val
       )
         .then((response) => {
           return response.json();
@@ -35,7 +35,7 @@ function MostUsedHashtags({ party }) {
           var labels = [];
           var vals = [];
 
-          for (let i = 1; i < 6; i++) {
+          for (let i = 1; i < 11; i++) {
             for (var key in data[4][2021][i]) {
               // console.log("Key: " + key);
               // console.log("Value: " + data[4][2021][i][key]);
@@ -44,14 +44,18 @@ function MostUsedHashtags({ party }) {
             }
           }
 
-          setVals(
-            [vals[0], vals[1], vals[2], vals[3], vals[4]]
-            // vals[5],
-            // vals[6],
-            // vals[7],
-            // vals[8],
-            // vals[9]]
-          );
+          setVals([
+            vals[0],
+            vals[1],
+            vals[2],
+            vals[3],
+            vals[4],
+            vals[5],
+            vals[6],
+            vals[7],
+            vals[8],
+            vals[9],
+          ]);
 
           setLabel(labels);
           setColor(Object.values(party)[2] + Object.values(party)[3]);
@@ -83,4 +87,4 @@ function MostUsedHashtags({ party }) {
   );
 }
 
-export default MostUsedHashtags;
+export default MostUsedUrls;

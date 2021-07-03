@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import "@material-ui/core";
 import { ListItem } from "@material-ui/core";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
 import "./App.css";
 import logo from "./logo.png";
@@ -25,6 +31,7 @@ import MostUsedHashtags from "./individual_graphs/MostUsedHashtags";
 import MostTweetsDay from "./individual_graphs/MostTweetsDay";
 import MostTweetsTime from "./individual_graphs/MostTweetsTime";
 import MostActiveUser from "./individual_graphs/MostActiveUser";
+import MostUsedUrls from "./individual_graphs/MostUsedUrls";
 import CountTotalByMonth_individual from "./individual_graphs/CountTotalByMonth_individual";
 import AverageReply_individual from "./individual_graphs/AverageReply_individual";
 import AverageLikesTweets_individual from "./individual_graphs/AverageLikesTweets_individual";
@@ -43,7 +50,11 @@ function App() {
     <div className="app">
       <Router>
         <div className="app_left">
-          <img src={logo} style={{ display: "flex", width: "100%" }}></img>
+          <a href="/">
+            {" "}
+            <img src={logo} style={{ display: "flex", width: "100%" }}></img>
+          </a>
+
           <div className="nevigation">
             <ListItem component={Link} to="/HOME">
               <ListItem button>HOME</ListItem>
@@ -76,6 +87,9 @@ function App() {
         </div>
 
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/HOME" />
+          </Route>
           <Route path="/HOME">
             <Home />
           </Route>
@@ -201,6 +215,7 @@ function CDU() {
         <MostTweetsDay party={parties.CDU} />
         <MostTweetsTime party={parties.CDU} />
         <MostActiveUser party={parties.CDU} />
+        <MostUsedUrls party={parties.CDU} />
       </div>
     </div>
   );
@@ -229,6 +244,7 @@ function SPD() {
         <MostTweetsDay party={parties.SPD} />
         <MostTweetsTime party={parties.SPD} />
         <MostActiveUser party={parties.SPD} />
+        <MostUsedUrls party={parties.SPD} />
       </div>
     </div>
   );
@@ -257,6 +273,7 @@ function AFD() {
         <MostTweetsDay party={parties.AfD} />
         <MostTweetsTime party={parties.AfD} />
         <MostActiveUser party={parties.AfD} />
+        <MostUsedUrls party={parties.AfD} />
       </div>
     </div>
   );
@@ -285,6 +302,7 @@ function FDP() {
         <MostTweetsDay party={parties.FDP} />
         <MostTweetsTime party={parties.FDP} />
         <MostActiveUser party={parties.FDP} />
+        <MostUsedUrls party={parties.FDP} />
       </div>
     </div>
   );
@@ -313,6 +331,7 @@ function LINKE() {
         <MostTweetsDay party={parties.Linke} />
         <MostTweetsTime party={parties.Linke} />
         <MostActiveUser party={parties.Linke} />
+        <MostUsedUrls party={parties.Linke} />
       </div>
     </div>
   );
@@ -341,6 +360,7 @@ function GRÜNE() {
         <MostTweetsDay party={parties.B90} />
         <MostTweetsTime party={parties.B90} />
         <MostActiveUser party={parties.B90} />
+        <MostUsedUrls party={parties.B90} />
       </div>
     </div>
   );
@@ -369,6 +389,7 @@ function CSU() {
         <MostTweetsDay party={parties.CSU} />
         <MostTweetsTime party={parties.CSU} />
         <MostActiveUser party={parties.CSU} />
+        <MostUsedUrls party={parties.CSU} />
       </div>
     </div>
   );
@@ -397,6 +418,7 @@ function Parteilos() {
         <MostTweetsDay party={parties.Parteilos} />
         <MostTweetsTime party={parties.Parteilos} />
         <MostActiveUser party={parties.Parteilos} />
+        <MostUsedUrls party={parties.Parteilos} />
       </div>
     </div>
   );
