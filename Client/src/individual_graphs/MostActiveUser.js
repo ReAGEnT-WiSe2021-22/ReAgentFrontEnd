@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, HorizontalBar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 
 const options = {
+  type: "horizontalBar",
   title: {
     display: true,
     text: "Most active user (2021)",
@@ -56,7 +57,7 @@ function MostActiveUser({ party }) {
     <div className="charts">
       {
         <Card>
-          <Bar
+          <HorizontalBar
             data={{
               labels: label,
               datasets: [

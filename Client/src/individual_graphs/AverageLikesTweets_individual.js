@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Card } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Average Likes",
+    text: ["Average Likes", "Average Likes"],
   },
   legend: {
     display: false,

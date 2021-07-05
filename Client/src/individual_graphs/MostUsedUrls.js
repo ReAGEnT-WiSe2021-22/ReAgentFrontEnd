@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, HorizontalBar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 
 const options = {
@@ -68,7 +68,7 @@ function MostUsedUrls({ party }) {
     <div className="charts">
       {
         <Card>
-          <Bar
+          <HorizontalBar
             data={{
               labels: labels,
               datasets: [

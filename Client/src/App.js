@@ -52,7 +52,10 @@ function App() {
         <div className="app_left">
           <a href="/">
             {" "}
-            <img src={logo} style={{ display: "flex", width: "100%" }}></img>
+            <img
+              src={logo}
+              style={{ display: "flex", width: "80%", padding: "20px" }}
+            ></img>
           </a>
 
           <div className="nevigation">
@@ -168,13 +171,6 @@ function Home() {
 
   return (
     <div className="home_right">
-      <div className="home_tweets">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
       <div className="home_charts">
         <CountTotalByYear parties={parties} />
         <TotalReplies parties={parties} />
@@ -186,22 +182,41 @@ function Home() {
 
         <Mediausagetweets parties={parties} />
       </div>
+      <div className="home_tweets">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
 
       {/* <MostUsedHashtags /> */}
     </div>
   );
 }
+
 function CDU() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/CDU")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.CDU} />
+        <LiveSentiment party={parties.CDU} />
+        <LiveCountTotalTweets party={parties.CDU} /> 
+      </div>*/
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.CDU} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.CDU} />
-        <LiveSentiment party={parties.CDU} />
-        <LiveCountTotalTweets party={parties.CDU} />
-
         <CountTotalByMonth_individual party={parties.CDU} />
         <TotalReplies_individual party={parties.CDU} />
         <MedienausageTweets_individual party={parties.CDU} />
@@ -217,20 +232,41 @@ function CDU() {
         <MostActiveUser party={parties.CDU} />
         <MostUsedUrls party={parties.CDU} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function SPD() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/SPD")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.SPD} />
+        <LiveSentiment party={parties.SPD} />
+        <LiveCountTotalTweets party={parties.SPD} /> 
+        
+        <div className="left">
+        <Tweets party={parties.SPD} />
+      </div>*/
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.SPD} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.SPD} />
-        <LiveSentiment party={parties.SPD} />
-        <LiveCountTotalTweets party={parties.SPD} />
-
         <CountTotalByMonth_individual party={parties.SPD} />
         <TotalReplies_individual party={parties.SPD} />
         <MedienausageTweets_individual party={parties.SPD} />
@@ -238,7 +274,7 @@ function SPD() {
         <AverageReply_individual party={parties.SPD} />
         <AverageLikesTweets_individual party={parties.SPD} />
         <AverageTweetLength_individual party={parties.SPD} />
-        <MedienausageTweets_individual party={parties.SPD} />
+        <AverageRetweets_individual party={parties.SPD} />
 
         <MostUsedHashtags party={parties.SPD} />
         <MostTweetsDay party={parties.SPD} />
@@ -246,20 +282,37 @@ function SPD() {
         <MostActiveUser party={parties.SPD} />
         <MostUsedUrls party={parties.SPD} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function AFD() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/AfD")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.AfD} />
+        <LiveSentiment party={parties.AfD} />
+        <LiveCountTotalTweets party={parties.AfD} /> */
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.AfD} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.AfD} />
-        <LiveSentiment party={parties.AfD} />
-        <LiveCountTotalTweets party={parties.AfD} />
-
         <CountTotalByMonth_individual party={parties.AfD} />
         <TotalReplies_individual party={parties.AfD} />
         <MedienausageTweets_individual party={parties.AfD} />
@@ -275,20 +328,39 @@ function AFD() {
         <MostActiveUser party={parties.AfD} />
         <MostUsedUrls party={parties.AfD} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function FDP() {
+  const [d, setD] = useState([0]);
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/FDP")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+          setLoading(false); //stop loading when data is fetched
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.FDP} />
+        <LiveSentiment party={parties.FDP} />
+        <LiveCountTotalTweets party={parties.FDP} /> */
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.FDP} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.FDP} />
-        <LiveSentiment party={parties.FDP} />
-        <LiveCountTotalTweets party={parties.FDP} />
-
         <CountTotalByMonth_individual party={parties.FDP} />
         <TotalReplies_individual party={parties.FDP} />
         <MedienausageTweets_individual party={parties.FDP} />
@@ -304,27 +376,44 @@ function FDP() {
         <MostActiveUser party={parties.FDP} />
         <MostUsedUrls party={parties.FDP} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function LINKE() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/Linke")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.Linke} />
+        <LiveSentiment party={parties.Linke} />
+        <LiveCountTotalTweets party={parties.Linke} /> */
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.Linke} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.Linke} />
-        <LiveSentiment party={parties.Linke} />
-        <LiveCountTotalTweets party={parties.Linke} />
-
         <CountTotalByMonth_individual party={parties.Linke} />
         <TotalReplies_individual party={parties.Linke} />
         <MedienausageTweets_individual party={parties.Linke} />
 
         <AverageReply_individual party={parties.Linke} />
         <AverageLikesTweets_individual party={parties.Linke} />
-        <AverageTweetLength_individual party={parties.CDU} />
+        <AverageTweetLength_individual party={parties.Linke} />
         <AverageRetweets_individual party={parties.Linke} />
 
         <MostUsedHashtags party={parties.Linke} />
@@ -333,20 +422,37 @@ function LINKE() {
         <MostActiveUser party={parties.Linke} />
         <MostUsedUrls party={parties.Linke} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function GRÜNE() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/B90")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /** <LiveMediaUsage party={parties.B90} />
+        <LiveSentiment party={parties.B90} />
+        <LiveCountTotalTweets party={parties.B90} /> */
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.B90} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.B90} />
-        <LiveSentiment party={parties.B90} />
-        <LiveCountTotalTweets party={parties.B90} />
-
         <CountTotalByMonth_individual party={parties.B90} />
         <TotalReplies_individual party={parties.B90} />
         <MedienausageTweets_individual party={parties.B90} />
@@ -362,20 +468,37 @@ function GRÜNE() {
         <MostActiveUser party={parties.B90} />
         <MostUsedUrls party={parties.B90} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function CSU() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/CSU")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.CSU} />
+        <LiveSentiment party={parties.CSU} />
+        <LiveCountTotalTweets party={parties.CSU} /> */
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.CSU} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.CSU} />
-        <LiveSentiment party={parties.CSU} />
-        <LiveCountTotalTweets party={parties.CSU} />
-
         <CountTotalByMonth_individual party={parties.CSU} />
         <TotalReplies_individual party={parties.CSU} />
         <MedienausageTweets_individual party={parties.CSU} />
@@ -391,20 +514,37 @@ function CSU() {
         <MostActiveUser party={parties.CSU} />
         <MostUsedUrls party={parties.CSU} />
       </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
 function Parteilos() {
+  const [d, setD] = useState([0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/Parteilos")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var newList = buildList(Object.values(data)[0]);
+          setD(newList);
+        });
+    };
+    fetchData();
+  }, []);
+  /**<LiveMediaUsage party={parties.Parteilos} />
+        <LiveSentiment party={parties.Parteilos} />
+        <LiveCountTotalTweets party={parties.Parteilos} /> */
   return (
     <div className="app_right">
-      <div className="left">
-        <Tweets party={parties.Parteilos} />
-      </div>
       <div className="right">
-        <LiveMediaUsage party={parties.Parteilos} />
-        <LiveSentiment party={parties.Parteilos} />
-        <LiveCountTotalTweets party={parties.Parteilos} />
-
         <CountTotalByMonth_individual party={parties.Parteilos} />
         <TotalReplies_individual party={parties.Parteilos} />
         <MedienausageTweets_individual party={parties.Parteilos} />
@@ -419,6 +559,13 @@ function Parteilos() {
         <MostTweetsTime party={parties.Parteilos} />
         <MostActiveUser party={parties.Parteilos} />
         <MostUsedUrls party={parties.Parteilos} />
+      </div>
+      <div className="left">
+        <Carousel breakPoints={breakPoints}>
+          {d.map((ids) => (
+            <TweetEmbed id={ids} />
+          ))}
+        </Carousel>
       </div>
     </div>
   );

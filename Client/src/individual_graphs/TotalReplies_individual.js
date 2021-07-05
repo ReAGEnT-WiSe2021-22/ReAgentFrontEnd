@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 const options = {
   title: {
@@ -31,7 +31,7 @@ function TotalReplies_individual({ party }) {
     <div className="charts">
       {
         <Card>
-          <Line
+          <Bar
             data={{
               labels: [2017, 2018, 2019, 2020, 2021],
               datasets: [

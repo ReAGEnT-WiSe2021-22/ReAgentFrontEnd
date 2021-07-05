@@ -16,7 +16,7 @@ function AverageRetweets_individual({ party }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/averagelikestweet")
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/averageRetweetsTweet")
         .then((response) => {
           return response.json();
         })

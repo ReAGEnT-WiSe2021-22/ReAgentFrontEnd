@@ -34,8 +34,6 @@ function AverageTweetLength({ parties }) {
   const [csu, setCSU] = useState(0);
   const [parteilos, setParteilos] = useState(0);
 
-  //const [colorArr, setColorArr] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       await fetch("http://reagent1.f4.htw-berlin.de:8080/averageTweetLength")
@@ -51,16 +49,6 @@ function AverageTweetLength({ parties }) {
           setLinke(data[5].Linke);
           setParteilos(data[6].Parteilos);
           setSPD(data[7].SPD);
-
-          /*let colArr = [];
-
-          for (let i = 0; i < 8; i++) {
-            colArr.push(
-              Object.values(parties)[i][2] + Object.values(parties)[i][3]
-            );
-          }
-
-          setColorArr(colArr);*/
         });
     };
     fetchData();
