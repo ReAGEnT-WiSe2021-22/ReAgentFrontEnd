@@ -5,7 +5,7 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Average Retweets",
+    text: "Ø Retweets",
   },
   legend: {
     display: true,

@@ -5,10 +5,23 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Most tweets day (2021)",
+    text: "★ Meiste Tweets Wochentag (2021)",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 5000,
+          stepSize: 1000, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 

@@ -5,7 +5,7 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Most tweets time (2021)",
+    text: "★ Meiste Tweets Uhrzeit (2021)",
   },
   legend: {
     display: false,

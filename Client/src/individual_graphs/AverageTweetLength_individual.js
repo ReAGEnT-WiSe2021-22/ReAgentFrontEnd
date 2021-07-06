@@ -4,10 +4,23 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Average Tweet Length",
+    text: "Ø Länge eines Tweets",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 180,
+          stepSize: 30, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 function AverageTweetLength_individual({ party }) {
@@ -16,7 +29,7 @@ function AverageTweetLength_individual({ party }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/averagelikestweet")
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/averageTweetLength")
         .then((response) => {
           return response.json();
         })

@@ -5,7 +5,7 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Average Tweet Length",
+    text: "Ø Länge eines Tweets",
   },
   legend: {
     display: true,

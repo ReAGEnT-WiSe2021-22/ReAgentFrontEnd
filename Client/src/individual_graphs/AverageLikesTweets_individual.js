@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Card, Typography } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: ["Average Likes", "Average Likes"],
+    text: "Ø Likes pro Tweet",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          //max: 300,
+          //stepSize: 50, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 function AverageLikesTweets_cdu({ party }) {

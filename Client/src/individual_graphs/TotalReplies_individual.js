@@ -4,10 +4,23 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Total Replies",
+    text: "∑ Antworten auf Tweet",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 300,
+          stepSize: 50, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 function TotalReplies_individual({ party }) {

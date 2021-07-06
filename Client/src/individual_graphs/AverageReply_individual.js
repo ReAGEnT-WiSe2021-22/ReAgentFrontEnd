@@ -4,10 +4,23 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Average Reply",
+    text: "Ø Antworten auf Tweet",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 40,
+          stepSize: 10, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 function AverageReply_cdu({ party }) {

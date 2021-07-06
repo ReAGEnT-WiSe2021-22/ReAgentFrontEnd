@@ -6,7 +6,7 @@ const options = {
   type: "horizontalBar",
   title: {
     display: true,
-    text: "Most active user (2021)",
+    text: "★ Aktivster Benutzer (2021)",
   },
   legend: {
     display: false,

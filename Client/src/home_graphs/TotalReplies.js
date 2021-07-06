@@ -5,7 +5,7 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Total Replies Per Year",
+    text: "∑ Antworten auf Tweet",
   },
   legend: {
     display: true,

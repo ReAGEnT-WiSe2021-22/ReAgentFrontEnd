@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TweetEmbed from "react-tweet-embed";
-//import { Tweet } from "react-static-tweets";
-//import "react-static-tweets/styles.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 function buildList(data) {

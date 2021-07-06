@@ -5,7 +5,7 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Media Usage Tweets",
+    text: "Ø Bilder/Videos pro Tweet",
   },
   legend: {
     display: true,

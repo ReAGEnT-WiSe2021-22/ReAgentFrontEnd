@@ -4,10 +4,23 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Total Tweets per Year",
+    text: "∑ Tweets pro Jahr",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 50000,
+          stepSize: 10000, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 

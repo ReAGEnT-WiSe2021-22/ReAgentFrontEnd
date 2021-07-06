@@ -5,7 +5,7 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Most used URLs (2021)",
+    text: "★ Meist genutzten URLs (2021)",
   },
   legend: {
     display: false,

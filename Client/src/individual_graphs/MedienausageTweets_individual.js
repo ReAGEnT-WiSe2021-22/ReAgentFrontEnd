@@ -4,10 +4,23 @@ import { Card } from "@material-ui/core";
 const options = {
   title: {
     display: true,
-    text: "Media Usage Tweets",
+    text: "Ø Bilder/Videos pro Tweet",
   },
   legend: {
     display: false,
+  },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 1,
+          stepSize: 0.1, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 function MedienausageTweets_cdu({ party }) {
