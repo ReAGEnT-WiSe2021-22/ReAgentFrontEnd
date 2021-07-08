@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "@material-ui/core";
 
 function LiveDbMostActive({ party }) {
-  const [d, setD] = useState(0);
+  const [d, setD] = useState();
   let partyName = Object.values(party)[1];
 
   useEffect(() => {
@@ -23,7 +23,8 @@ function LiveDbMostActive({ party }) {
   return (
     <Card>
       <p>
-        Aktivster Benutzer: <a href={"https://twitter.com/" + String(d)}>{d}</a>
+        Aktivster Benutzer:{" "}
+        <a href={"https://twitter.com/" + String(d)}>@{d}</a>
       </p>
     </Card>
   );

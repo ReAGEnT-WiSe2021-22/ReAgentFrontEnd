@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "@material-ui/core";
 
 function LiveDbTweetCount({ party }) {
-  const [d, setD] = useState(0);
+  const [d, setD] = useState();
   let partyName = Object.values(party)[1];
 
   useEffect(() => {

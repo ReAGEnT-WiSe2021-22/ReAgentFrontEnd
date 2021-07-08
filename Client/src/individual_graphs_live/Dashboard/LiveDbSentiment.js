@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "@material-ui/core";
 
 function LiveDbSentiment({ party }) {
-  const [d, setD] = useState(0);
+  const [d, setD] = useState();
   let partyName = Object.values(party)[1];
 
   useEffect(() => {
@@ -20,16 +20,15 @@ function LiveDbSentiment({ party }) {
     fetchData();
   }, [party, partyName]);
 
-  let smileyArr = ["😊︎", "😐︎", "☹︎"];
+  //let smileyArr = ["😊︎", "😐︎", "☹︎"];
   let smiley = "";
 
-  if (d > 2) {
-    smiley = smileyArr[0];
-  } else if (false) {
-    // placeholder
-    smiley = smileyArr[1];
+  if (d >= 1.8) {
+    smiley = "😊︎";
+  } else if (d < 1.7) {
+    smiley = "☹︎";
   } else {
-    smiley = smileyArr[2];
+    smiley = "😐︎";
   }
 
   return (
