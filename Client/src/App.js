@@ -261,8 +261,10 @@ function CDU() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.CDU} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.CDU} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -331,8 +333,10 @@ function SPD() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.SPD} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.SPD} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -396,8 +400,10 @@ function AFD() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.AfD} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.AfD} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -463,8 +469,10 @@ function FDP() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.FDP} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.FDP} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -528,8 +536,10 @@ function LINKE() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.Linke} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.Linke} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -593,8 +603,10 @@ function GRÜNE() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.B90} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.B90} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -658,8 +670,10 @@ function CSU() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.CSU} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.CSU} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>
@@ -723,8 +737,10 @@ function Parteilos() {
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Daten (24h)
       </Typography>
-      <LiveDashboard party={parties.Parteilos} />
-      <div style={{ paddingTop: "15px" }}>
+      <div className="topFullWidth">
+        <LiveDashboard party={parties.Parteilos} />
+      </div>
+      <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
           🔹 Historische Daten
         </Typography>

@@ -148,6 +148,13 @@ button.rec-dot:focus {
   padding-top: 20px;
 }
 
+.topFullWidth {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  padding-top: 20px;
+}
+
 /** 
   changes display of the divs whenever the screen size changes
 */

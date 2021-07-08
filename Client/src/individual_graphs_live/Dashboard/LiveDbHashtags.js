@@ -22,7 +22,15 @@ function LiveDbHashtags({ party }) {
   return (
     <div>
       <p className="live">
-        Meist benutzes Hashtag: <span style={{ color: "#1da1f2" }}> #️{d}</span>
+        Meist benutzes Hashtag:{" "}
+        <a
+          href={"https://twitter.com/hashtag/" + d}
+          target="_blank"
+          style={{ color: "#1da1f2" }}
+          rel="noreferrer"
+        >
+          #{d}
+        </a>
       </p>
     </div>
   );

@@ -28,6 +28,7 @@ function LiveDbMostActive({ party }) {
           href={"https://twitter.com/" + String(d)}
           className="liveActiveUser"
           target="_blank"
+          rel="noreferrer"
         >
           @{d}
         </a>
