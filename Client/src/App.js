@@ -42,6 +42,8 @@ import TotalReplies_individual from "./individual_graphs/TotalReplies_individual
 import LiveMediaUsage from "./individual_graphs_live/LiveMediaUsage";
 import LiveSentiment from "./individual_graphs_live/LiveSentiment";
 import LiveCountTotalTweets from "./individual_graphs_live/LiveCountTotalTweets";
+import LiveDashboard from "./individual_graphs_live/Dashboard/LiveDashboard";
+
 //import WordCloud from "./individual_graphs/WordCloud";
 import TweetEmbed from "react-tweet-embed";
 
@@ -219,11 +221,8 @@ function CDU() {
       <Typography variant="h3" align="center" gutterBottom>
         CDU
       </Typography>
+      <LiveDashboard party={parties.CDU} />
       <div className="right">
-        <LiveMediaUsage party={parties.CDU} />
-        <LiveSentiment party={parties.CDU} />
-        <LiveCountTotalTweets party={parties.CDU} />
-
         <CountTotalByMonth_individual party={parties.CDU} />
         <AverageRetweets_individual party={parties.CDU} />
         <TotalReplies_individual party={parties.CDU} />
@@ -276,6 +275,7 @@ function SPD() {
       <Typography variant="h3" align="center" gutterBottom>
         SPD
       </Typography>
+      <LiveDashboard party={parties.SPD} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.SPD} />
         <AverageRetweets_individual party={parties.SPD} />
@@ -325,6 +325,7 @@ function AFD() {
       <Typography variant="h3" align="center" gutterBottom>
         AfD
       </Typography>
+      <LiveDashboard party={parties.AfD} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.AfD} />
         <AverageRetweets_individual party={parties.AfD} />
@@ -376,6 +377,7 @@ function FDP() {
       <Typography variant="h3" align="center" gutterBottom>
         FDP
       </Typography>
+      <LiveDashboard party={parties.FDP} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.FDP} />
         <AverageRetweets_individual party={parties.FDP} />
@@ -425,6 +427,7 @@ function LINKE() {
       <Typography variant="h3" align="center" gutterBottom>
         Linke
       </Typography>
+      <LiveDashboard party={parties.Linke} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.Linke} />
         <AverageRetweets_individual party={parties.Linke} />
@@ -474,6 +477,7 @@ function GRÜNE() {
       <Typography variant="h3" align="center" gutterBottom>
         Grüne
       </Typography>
+      <LiveDashboard party={parties.B90} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.B90} />
         <AverageRetweets_individual party={parties.B90} />
@@ -523,6 +527,7 @@ function CSU() {
       <Typography variant="h3" align="center" gutterBottom>
         CSU
       </Typography>
+      <LiveDashboard party={parties.CSU} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.CSU} />
         <AverageRetweets_individual party={parties.CSU} />
@@ -572,6 +577,7 @@ function Parteilos() {
       <Typography variant="h3" align="center" gutterBottom>
         Parteilos
       </Typography>
+      <LiveDashboard party={parties.Parteilos} />
       <div className="right">
         <CountTotalByMonth_individual party={parties.Parteilos} />
         <AverageRetweets_individual party={parties.Parteilos} />

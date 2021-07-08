@@ -16,8 +16,8 @@ const options = {
         ticks: {
           beginAtZero: true, // minimum value will be 0.
           min: 0,
-          max: 180,
-          stepSize: 30, // 1 - 2 - 3 ...
+          max: 200,
+          stepSize: 40, // 1 - 2 - 3 ...
         },
       },
     ],
