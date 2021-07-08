@@ -8,7 +8,7 @@ import LiveDbSentiment from "./LiveDbSentiment";
 function LiveDashboard({ party }) {
   return (
     <div>
-      <Card>
+      <Card className="liveDashBoard">
         <LiveDbTweetCount party={party} />
         <LiveDbHashtags party={party} />
         <LiveDbMostActive party={party} />

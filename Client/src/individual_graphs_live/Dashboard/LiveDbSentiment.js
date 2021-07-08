@@ -24,17 +24,17 @@ function LiveDbSentiment({ party }) {
   let smiley = "";
 
   if (d >= 1.8) {
-    smiley = "😊︎";
+    smiley = "😊︎ ✅";
   } else if (d < 1.7) {
-    smiley = "☹︎";
+    smiley = "🙁 💢";
   } else {
-    smiley = "😐︎";
+    smiley = "😐︎❓";
   }
 
   return (
-    <Card>
-      <p>Stimmung: {smiley}</p>
-    </Card>
+    <div>
+      <p className="liveEmoji">Stimmung: {smiley}</p>
+    </div>
   );
 }
 

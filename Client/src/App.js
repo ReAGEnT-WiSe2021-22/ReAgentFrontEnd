@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "@material-ui/core";
-import { ListItem, Typography } from "@material-ui/core";
+import { ListItem, Typography, Box, Icon } from "@material-ui/core";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import { makeStyles } from "@material-ui/core/styles";
 
 import {
   BrowserRouter as Router,
@@ -47,6 +49,22 @@ import LiveDashboard from "./individual_graphs_live/Dashboard/LiveDashboard";
 //import WordCloud from "./individual_graphs/WordCloud";
 import TweetEmbed from "react-tweet-embed";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > svg": {
+      margin: theme.spacing(2),
+    },
+  },
+}));
+
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
+
 function App() {
   return (
     <div className="app">
@@ -62,7 +80,10 @@ function App() {
 
           <div className="nevigation">
             <ListItem component={Link} to="/HOME">
-              <ListItem button>HOME</ListItem>
+              <ListItem button>
+                <HomeIcon />
+                HOME
+              </ListItem>
             </ListItem>
             <ListItem component={Link} to="/CDU">
               <ListItem button>CDU</ListItem>
@@ -173,9 +194,18 @@ function Home() {
 
   return (
     <div className="home_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        Home
-      </Typography>
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={900}>
+            HOME
+          </Box>
+        </Typography>
+      </div>
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="home_charts">
         <CountTotalByYear parties={parties} />
         <TotalReplies parties={parties} />
@@ -188,6 +218,9 @@ function Home() {
         <Mediausagetweets parties={parties} />
       </div>
       <div className="home_tweets">
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Live Tweets
+        </Typography>
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
             <TweetEmbed id={ids} />
@@ -218,10 +251,23 @@ function CDU() {
 
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        CDU
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={900}>
+            CDU
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.CDU} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
+
       <div className="right">
         <CountTotalByMonth_individual party={parties.CDU} />
         <AverageRetweets_individual party={parties.CDU} />
@@ -238,6 +284,9 @@ function CDU() {
         <MostActiveUser party={parties.CDU} />
         <MostUsedUrls party={parties.CDU} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -272,10 +321,22 @@ function SPD() {
       </div>*/
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        SPD
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            SPD
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.SPD} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.SPD} />
         <AverageRetweets_individual party={parties.SPD} />
@@ -292,6 +353,9 @@ function SPD() {
         <MostActiveUser party={parties.SPD} />
         <MostUsedUrls party={parties.SPD} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -322,10 +386,22 @@ function AFD() {
         <LiveCountTotalTweets party={parties.AfD} /> */
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        AfD
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            SPD
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.AfD} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.AfD} />
         <AverageRetweets_individual party={parties.AfD} />
@@ -342,6 +418,9 @@ function AFD() {
         <MostActiveUser party={parties.AfD} />
         <MostUsedUrls party={parties.AfD} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -374,10 +453,22 @@ function FDP() {
         <LiveCountTotalTweets party={parties.FDP} /> */
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        FDP
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            FDP
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.FDP} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.FDP} />
         <AverageRetweets_individual party={parties.FDP} />
@@ -394,6 +485,9 @@ function FDP() {
         <MostActiveUser party={parties.FDP} />
         <MostUsedUrls party={parties.FDP} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -424,10 +518,22 @@ function LINKE() {
         <LiveCountTotalTweets party={parties.Linke} /> */
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        Linke
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            Linke
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.Linke} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.Linke} />
         <AverageRetweets_individual party={parties.Linke} />
@@ -444,6 +550,9 @@ function LINKE() {
         <MostActiveUser party={parties.Linke} />
         <MostUsedUrls party={parties.Linke} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -474,10 +583,22 @@ function GRÜNE() {
         <LiveCountTotalTweets party={parties.B90} /> */
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        Grüne
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            Grüne
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.B90} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.B90} />
         <AverageRetweets_individual party={parties.B90} />
@@ -494,6 +615,9 @@ function GRÜNE() {
         <MostActiveUser party={parties.B90} />
         <MostUsedUrls party={parties.B90} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -524,10 +648,22 @@ function CSU() {
         <LiveCountTotalTweets party={parties.CSU} /> */
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        CSU
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            CSU
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.CSU} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.CSU} />
         <AverageRetweets_individual party={parties.CSU} />
@@ -544,6 +680,9 @@ function CSU() {
         <MostActiveUser party={parties.CSU} />
         <MostUsedUrls party={parties.CSU} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (
@@ -574,10 +713,22 @@ function Parteilos() {
         <LiveCountTotalTweets party={parties.Parteilos} /> */
   return (
     <div className="app_right">
-      <Typography variant="h3" align="center" gutterBottom>
-        Parteilos
+      <div style={{ paddingTop: "11px" }}>
+        <Typography variant="h3" align="center" gutterBottom>
+          <Box letterSpacing={10} fontWeight={700}>
+            Parteilos
+          </Box>
+        </Typography>
+      </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Daten (24h)
       </Typography>
       <LiveDashboard party={parties.Parteilos} />
+      <div style={{ paddingTop: "15px" }}>
+        <Typography variant="h6" align="left" gutterBottom>
+          🔹 Historische Daten
+        </Typography>
+      </div>
       <div className="right">
         <CountTotalByMonth_individual party={parties.Parteilos} />
         <AverageRetweets_individual party={parties.Parteilos} />
@@ -594,6 +745,9 @@ function Parteilos() {
         <MostActiveUser party={parties.Parteilos} />
         <MostUsedUrls party={parties.Parteilos} />
       </div>
+      <Typography variant="h6" align="left" gutterBottom>
+        🔹 Live Tweets
+      </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
           {d.map((ids) => (

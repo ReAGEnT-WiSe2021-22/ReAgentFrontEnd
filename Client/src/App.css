@@ -9,11 +9,21 @@ body {
 body::-webkit-scrollbar {
   width: 1em;
 }
+p {
+  font-size: 18px;
+}
 .landing_page {
   display: flex;
 }
+h3 {
+  color: #1da1f2;
+}
+h6 {
+  color: #1da1f2;
+}
 
 .app {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -104,6 +114,23 @@ button.rec-dot:focus {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding-top: 20px;
+}
+.liveDashBoard {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.live {
+  padding-top: 15px;
+}
+.liveEmoji {
+  padding-top: 10px;
+}
+.liveActiveUser {
+  color: #1da1f2;
 }
 
 .left {

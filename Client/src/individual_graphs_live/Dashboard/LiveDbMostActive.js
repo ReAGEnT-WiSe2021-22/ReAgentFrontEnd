@@ -21,12 +21,18 @@ function LiveDbMostActive({ party }) {
     fetchData();
   }, [party, partyName]);
   return (
-    <Card>
-      <p>
+    <div>
+      <p className="live">
         Aktivster Benutzer:{" "}
-        <a href={"https://twitter.com/" + String(d)}>@{d}</a>
+        <a
+          href={"https://twitter.com/" + String(d)}
+          className="liveActiveUser"
+          target="_blank"
+        >
+          @{d}
+        </a>
       </p>
-    </Card>
+    </div>
   );
 }
 

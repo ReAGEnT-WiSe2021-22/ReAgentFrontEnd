@@ -20,9 +20,11 @@ function LiveDbHashtags({ party }) {
     fetchData();
   }, [party, partyName]);
   return (
-    <Card>
-      <p>Meist benutzes Hashtag: #{d}</p>
-    </Card>
+    <div>
+      <p className="live">
+        Meist benutzes Hashtag: <span style={{ color: "#1da1f2" }}> #️{d}</span>
+      </p>
+    </div>
   );
 }
 
