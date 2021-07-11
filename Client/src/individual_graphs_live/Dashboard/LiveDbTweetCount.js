@@ -22,8 +22,8 @@ function LiveDbTweetCount({ party }) {
   }, [party, partyName]);
   return (
     <div>
-      <p className="liveEmoji">
-        Anzahl Tweets: <span style={{ color: "#1da1f2" }}>{d}🔺</span>
+      <p className="live">
+        Anzahl Tweets: <span style={{ color: "#1da1f2" }}>{d}</span>
       </p>
     </div>
   );

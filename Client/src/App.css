@@ -126,9 +126,9 @@ button.rec-dot:focus {
 .live {
   padding-top: 15px;
 }
-.liveEmoji {
+/* .liveEmoji {
   padding-top: 10px;
-}
+} */
 .liveActiveUser {
   color: #1da1f2;
 }

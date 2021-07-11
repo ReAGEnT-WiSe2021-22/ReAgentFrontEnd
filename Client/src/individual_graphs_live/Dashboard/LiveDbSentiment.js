@@ -22,18 +22,24 @@ function LiveDbSentiment({ party }) {
 
   //let smileyArr = ["😊︎", "😐︎", "☹︎"];
   let smiley = "";
+  let cssColor = "";
 
   if (d >= 1.8) {
-    smiley = "😊︎ ✅";
+    smiley = "😊︎";
+    cssColor = "#00c800";
   } else if (d < 1.7) {
-    smiley = "🙁 💢";
+    smiley = "☹︎";
+    cssColor = "#c80000";
   } else {
-    smiley = "😐︎❓";
+    smiley = "😐︎";
+    cssColor = "#e6c700";
   }
 
   return (
     <div>
-      <p className="liveEmoji">Stimmung: {smiley}</p>
+      <p className="live">
+        Stimmung: <span style={{ color: cssColor }}>{smiley}</span>
+      </p>
     </div>
   );
 }
