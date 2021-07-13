@@ -61,6 +61,7 @@ a {
 
   padding-left: 20px;
   padding-right: 20px;
+  overflow: auto;
 
   /*display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -71,6 +72,7 @@ a {
   margin-left: 300px;
   padding-left: 20px;
   display: table-column;
+  overflow: auto;
 }
 .charts {
   margin-top: 10px;
@@ -114,6 +116,7 @@ button.rec-dot:focus {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding-top: 20px;
+  overflow: auto;
 }
 .liveDashBoard {
   display: flex;
@@ -121,6 +124,7 @@ button.rec-dot:focus {
   height: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
+  overflow: auto;
 }
 
 .live {
@@ -135,6 +139,7 @@ button.rec-dot:focus {
 
 .left {
   padding-top: 30px;
+  overflow: auto;
 }
 
 .right {
@@ -146,6 +151,7 @@ button.rec-dot:focus {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding-top: 20px;
+  overflow: auto;
 }
 
 .topFullWidth {
