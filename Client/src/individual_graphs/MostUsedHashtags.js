@@ -10,6 +10,19 @@ const options = {
   legend: {
     display: false,
   },
+  scales: {
+    yAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 800,
+          stepSize: 100, // 1 - 2 - 3 ...
+        },
+      },
+    ],
+  },
 };
 
 function MostUsedHashtags({ party }) {

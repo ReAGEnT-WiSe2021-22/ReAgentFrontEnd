@@ -393,7 +393,7 @@ function AFD() {
       <div style={{ paddingTop: "11px" }}>
         <Typography variant="h3" align="center" gutterBottom>
           <Box letterSpacing={10} fontWeight={700}>
-            Afd
+            AfD
           </Box>
         </Typography>
       </div>

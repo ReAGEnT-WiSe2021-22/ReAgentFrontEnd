@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar, HorizontalBar } from "react-chartjs-2";
+import { HorizontalBar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 
 const options = {
@@ -10,6 +10,19 @@ const options = {
   },
   legend: {
     display: false,
+  },
+  scales: {
+    xAxes: [
+      {
+        display: true,
+        ticks: {
+          beginAtZero: true, // minimum value will be 0.
+          min: 0,
+          max: 4000,
+          stepSize: 500, // 1 - 2 - 3 ...
+        },
+      },
+    ],
   },
 };
 
