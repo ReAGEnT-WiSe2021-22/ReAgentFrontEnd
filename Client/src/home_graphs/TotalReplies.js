@@ -24,6 +24,7 @@ const options = {
     ],
   },
 };
+
 function TotalReplies({ parties }) {
   const [cdu, setCDU] = useState(0);
   const [spd, setSPD] = useState(0);

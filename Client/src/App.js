@@ -104,28 +104,28 @@ function App() {
             <Home />
           </Route>
           <Route path="/CDU">
-            <CDU />
+            <PartyPage party="CDU" />
           </Route>
           <Route path="/SPD">
-            <SPD />
+            <PartyPage party="SPD" />
           </Route>
           <Route path="/AFD">
-            <AFD />
+            <PartyPage party="AfD" />
           </Route>
           <Route path="/FDP">
-            <FDP />
+            <PartyPage party="FDP" />
           </Route>
           <Route path="/LINKE">
-            <LINKE />
+            <PartyPage party="Linke" />
           </Route>
           <Route path="/GRÜNE">
-            <GRÜNE />
+            <PartyPage party="B90" />
           </Route>
           <Route path="/CSU">
-            <CSU />
+            <PartyPage party="CSU" />
           </Route>
           <Route path="/Parteilos">
-            <Parteilos />
+            <PartyPage party="Parteilos" />
           </Route>
         </Switch>
       </Router>
@@ -170,7 +170,6 @@ function Home() {
         .then((data) => {
           var newList = buildList(Object.values(data)[0]);
           setD(newList);
-          //setLoading(false); //stop loading when data is fetched
         });
     };
     fetchData();
@@ -211,34 +210,32 @@ function Home() {
           ))}
         </Carousel>
       </div>
-
-      {/* <MostUsedHashtags /> */}
     </div>
   );
 }
 
-function CDU() {
-  const [d, setD] = useState([0]);
+function PartyPage({ party }) {
+  const [partyData, setPartyData] = useState([0]);
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/CDU")
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/" + party)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           var newList = buildList(Object.values(data)[0]);
-          setD(newList);
+          setPartyData(newList);
         });
     };
     fetchData();
-  }, []);
+  }, [party]);
 
   return (
     <div className="app_right">
       <div style={{ paddingTop: "11px" }}>
         <Typography variant="h3" align="center" gutterBottom>
           <Box letterSpacing={10} fontWeight={900}>
-            CDU
+            {party}
           </Box>
         </Typography>
       </div>
@@ -246,7 +243,7 @@ function CDU() {
         🔹 Live Daten (24h)
       </Typography>
       <div className="topFullWidth">
-        <LiveDashboard party={parties.CDU} />
+        <LiveDashboard party={parties[party]} />
       </div>
       <div style={{ paddingTop: "20px" }}>
         <Typography variant="h6" align="left" gutterBottom>
@@ -255,500 +252,27 @@ function CDU() {
       </div>
 
       <div className="right">
-        <CountTotalByMonthIndividual party={parties.CDU} />
-        <AverageRetweetsIndividual party={parties.CDU} />
-        <TotalRepliesIndividual party={parties.CDU} />
+        <CountTotalByMonthIndividual party={parties[party]} />
+        <AverageRetweetsIndividual party={parties[party]} />
+        <TotalRepliesIndividual party={parties[party]} />
 
-        <AverageReplyIndividual party={parties.CDU} />
-        <AverageLikesTweetsIndividual party={parties.CDU} />
-        <AverageTweetLengthIndividual party={parties.CDU} />
-        <MedienausageTweetsIndividual party={parties.CDU} />
+        <AverageReplyIndividual party={parties[party]} />
+        <AverageLikesTweetsIndividual party={parties[party]} />
+        <AverageTweetLengthIndividual party={parties[party]} />
+        <MedienausageTweetsIndividual party={parties[party]} />
 
-        <MostUsedHashtags party={parties.CDU} />
-        <MostTweetsDay party={parties.CDU} />
-        <MostTweetsTime party={parties.CDU} />
-        <MostActiveUser party={parties.CDU} />
-        <MostUsedUrls party={parties.CDU} />
+        <MostUsedHashtags party={parties[party]} />
+        <MostTweetsDay party={parties[party]} />
+        <MostTweetsTime party={parties[party]} />
+        <MostActiveUser party={parties[party]} />
+        <MostUsedUrls party={parties[party]} />
       </div>
       <Typography variant="h6" align="left" gutterBottom>
         🔹 Live Tweets
       </Typography>
       <div className="left">
         <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function SPD() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/SPD")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /**<LiveMediaUsage party={parties.SPD} />
-        <LiveSentiment party={parties.SPD} />
-        <LiveCountTotalTweets party={parties.SPD} /> 
-        
-        <div className="left">
-        <Tweets party={parties.SPD} />
-      </div>*/
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            SPD
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.SPD} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.SPD} />
-        <AverageRetweetsIndividual party={parties.SPD} />
-        <TotalRepliesIndividual party={parties.SPD} />
-
-        <AverageReplyIndividual party={parties.SPD} />
-        <AverageLikesTweetsIndividual party={parties.SPD} />
-        <AverageTweetLengthIndividual party={parties.SPD} />
-        <MedienausageTweetsIndividual party={parties.SPD} />
-
-        <MostUsedHashtags party={parties.SPD} />
-        <MostTweetsDay party={parties.SPD} />
-        <MostTweetsTime party={parties.SPD} />
-        <MostActiveUser party={parties.SPD} />
-        <MostUsedUrls party={parties.SPD} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function AFD() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/AfD")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /**<LiveMediaUsage party={parties.AfD} />
-        <LiveSentiment party={parties.AfD} />
-        <LiveCountTotalTweets party={parties.AfD} /> */
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            AfD
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.AfD} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.AfD} />
-        <AverageRetweetsIndividual party={parties.AfD} />
-        <TotalRepliesIndividual party={parties.AfD} />
-
-        <AverageReplyIndividual party={parties.AfD} />
-        <AverageLikesTweetsIndividual party={parties.AfD} />
-        <AverageTweetLengthIndividual party={parties.AfD} />
-        <MedienausageTweetsIndividual party={parties.AfD} />
-
-        <MostUsedHashtags party={parties.AfD} />
-        <MostTweetsDay party={parties.AfD} />
-        <MostTweetsTime party={parties.AfD} />
-        <MostActiveUser party={parties.AfD} />
-        <MostUsedUrls party={parties.AfD} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function FDP() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/FDP")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /**<LiveMediaUsage party={parties.FDP} />
-        <LiveSentiment party={parties.FDP} />
-        <LiveCountTotalTweets party={parties.FDP} /> */
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            FDP
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.FDP} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.FDP} />
-        <AverageRetweetsIndividual party={parties.FDP} />
-        <TotalRepliesIndividual party={parties.FDP} />
-
-        <AverageReplyIndividual party={parties.FDP} />
-        <AverageLikesTweetsIndividual party={parties.FDP} />
-        <AverageTweetLengthIndividual party={parties.FDP} />
-        <MedienausageTweetsIndividual party={parties.FDP} />
-
-        <MostUsedHashtags party={parties.FDP} />
-        <MostTweetsDay party={parties.FDP} />
-        <MostTweetsTime party={parties.FDP} />
-        <MostActiveUser party={parties.FDP} />
-        <MostUsedUrls party={parties.FDP} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function LINKE() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/Linke")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /**<LiveMediaUsage party={parties.Linke} />
-        <LiveSentiment party={parties.Linke} />
-        <LiveCountTotalTweets party={parties.Linke} /> */
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            Linke
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.Linke} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.Linke} />
-        <AverageRetweetsIndividual party={parties.Linke} />
-        <TotalRepliesIndividual party={parties.Linke} />
-
-        <AverageReplyIndividual party={parties.Linke} />
-        <AverageLikesTweetsIndividual party={parties.Linke} />
-        <AverageTweetLengthIndividual party={parties.Linke} />
-        <MedienausageTweetsIndividual party={parties.Linke} />
-
-        <MostUsedHashtags party={parties.Linke} />
-        <MostTweetsDay party={parties.Linke} />
-        <MostTweetsTime party={parties.Linke} />
-        <MostActiveUser party={parties.Linke} />
-        <MostUsedUrls party={parties.Linke} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function GRÜNE() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/B90")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /** <LiveMediaUsage party={parties.B90} />
-        <LiveSentiment party={parties.B90} />
-        <LiveCountTotalTweets party={parties.B90} /> */
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            Grüne
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.B90} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.B90} />
-        <AverageRetweetsIndividual party={parties.B90} />
-        <TotalRepliesIndividual party={parties.B90} />
-
-        <AverageReplyIndividual party={parties.B90} />
-        <AverageLikesTweetsIndividual party={parties.B90} />
-        <AverageTweetLengthIndividual party={parties.B90} />
-        <MedienausageTweetsIndividual party={parties.B90} />
-
-        <MostUsedHashtags party={parties.B90} />
-        <MostTweetsDay party={parties.B90} />
-        <MostTweetsTime party={parties.B90} />
-        <MostActiveUser party={parties.B90} />
-        <MostUsedUrls party={parties.B90} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function CSU() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/CSU")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /**<LiveMediaUsage party={parties.CSU} />
-        <LiveSentiment party={parties.CSU} />
-        <LiveCountTotalTweets party={parties.CSU} /> */
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            CSU
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.CSU} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.CSU} />
-        <AverageRetweetsIndividual party={parties.CSU} />
-        <TotalRepliesIndividual party={parties.CSU} />
-
-        <AverageReplyIndividual party={parties.CSU} />
-        <AverageLikesTweetsIndividual party={parties.CSU} />
-        <AverageTweetLengthIndividual party={parties.CSU} />
-        <MedienausageTweetsIndividual party={parties.CSU} />
-
-        <MostUsedHashtags party={parties.CSU} />
-        <MostTweetsDay party={parties.CSU} />
-        <MostTweetsTime party={parties.CSU} />
-        <MostActiveUser party={parties.CSU} />
-        <MostUsedUrls party={parties.CSU} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
-            <TweetEmbed id={ids} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-}
-function Parteilos() {
-  const [d, setD] = useState([0]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/Parteilos")
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          var newList = buildList(Object.values(data)[0]);
-          setD(newList);
-        });
-    };
-    fetchData();
-  }, []);
-  /**<LiveMediaUsage party={parties.Parteilos} />
-        <LiveSentiment party={parties.Parteilos} />
-        <LiveCountTotalTweets party={parties.Parteilos} /> */
-  return (
-    <div className="app_right">
-      <div style={{ paddingTop: "11px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          <Box letterSpacing={10} fontWeight={700}>
-            Parteilos
-          </Box>
-        </Typography>
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Daten (24h)
-      </Typography>
-      <div className="topFullWidth">
-        <LiveDashboard party={parties.Parteilos} />
-      </div>
-      <div style={{ paddingTop: "20px" }}>
-        <Typography variant="h6" align="left" gutterBottom>
-          🔹 Historische Daten
-        </Typography>
-      </div>
-      <div className="right">
-        <CountTotalByMonthIndividual party={parties.Parteilos} />
-        <AverageRetweetsIndividual party={parties.Parteilos} />
-        <TotalRepliesIndividual party={parties.Parteilos} />
-
-        <AverageReplyIndividual party={parties.Parteilos} />
-        <AverageLikesTweetsIndividual party={parties.Parteilos} />
-        <AverageTweetLengthIndividual party={parties.Parteilos} />
-        <MedienausageTweetsIndividual party={parties.Parteilos} />
-
-        <MostUsedHashtags party={parties.Parteilos} />
-        <MostTweetsDay party={parties.Parteilos} />
-        <MostTweetsTime party={parties.Parteilos} />
-        <MostActiveUser party={parties.Parteilos} />
-        <MostUsedUrls party={parties.Parteilos} />
-      </div>
-      <Typography variant="h6" align="left" gutterBottom>
-        🔹 Live Tweets
-      </Typography>
-      <div className="left">
-        <Carousel breakPoints={breakPoints}>
-          {d.map((ids) => (
+          {partyData.map((ids) => (
             <TweetEmbed id={ids} />
           ))}
         </Carousel>

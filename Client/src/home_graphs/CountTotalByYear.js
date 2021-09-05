@@ -24,6 +24,7 @@ const options = {
     ],
   },
 };
+
 function CountTotalByYear({ parties }) {
   const [cdu, setCDU] = useState(0);
   const [spd, setSPD] = useState(0);
