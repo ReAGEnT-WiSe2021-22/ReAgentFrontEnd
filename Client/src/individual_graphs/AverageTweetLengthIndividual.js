@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
+
 const options = {
   title: {
     display: true,
-    text: "Ø Likes pro Tweet",
+    text: "Ø Länge eines Tweets",
   },
   legend: {
     display: false,
@@ -16,20 +17,21 @@ const options = {
         ticks: {
           beginAtZero: true, // minimum value will be 0.
           min: 0,
-          //max: 300,
-          //stepSize: 50, // 1 - 2 - 3 ...
+          max: 200,
+          stepSize: 40, // 1 - 2 - 3 ...
         },
       },
     ],
   },
 };
-function AverageLikesTweets_cdu({ party }) {
+
+function AverageTweetLengthIndividual({ party }) {
   const [d, setD] = useState(0);
   const [color, setColor] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/averagelikestweet")
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/averageTweetLength")
         .then((response) => {
           return response.json();
         })
@@ -64,4 +66,4 @@ function AverageLikesTweets_cdu({ party }) {
   );
 }
 
-export default AverageLikesTweets_cdu;
+export default AverageTweetLengthIndividual;

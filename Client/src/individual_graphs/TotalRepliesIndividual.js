@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
+
 const options = {
   title: {
     display: true,
@@ -23,7 +24,8 @@ const options = {
     ],
   },
 };
-function TotalReplies_individual({ party }) {
+
+function TotalRepliesIndividual({ party }) {
   const [d, setD] = useState(0);
   const [color, setColor] = useState(0);
 
@@ -64,4 +66,4 @@ function TotalReplies_individual({ party }) {
   );
 }
 
-export default TotalReplies_individual;
+export default TotalRepliesIndividual;

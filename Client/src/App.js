@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "@material-ui/core";
-import { ListItem, Typography, Box, Icon } from "@material-ui/core";
+import { ListItem, Typography, Box } from "@material-ui/core";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import { makeStyles } from "@material-ui/core/styles";
 
 import {
   BrowserRouter as Router,
@@ -14,7 +13,6 @@ import {
 
 import "./App.css";
 import logo from "./logo.png";
-// import map from "./map.png";
 import Carousel from "react-elastic-carousel";
 
 // home_graphs
@@ -26,36 +24,21 @@ import Mediausagetweets from "./home_graphs/Mediausagetweets";
 import AverageRetweets from "./home_graphs/AverageRetweets";
 import TotalReplies from "./home_graphs/TotalReplies";
 
-// individual graphs
-import Tweets from "./individual_graphs/Tweets";
-
 import MostUsedHashtags from "./individual_graphs/MostUsedHashtags";
 import MostTweetsDay from "./individual_graphs/MostTweetsDay";
 import MostTweetsTime from "./individual_graphs/MostTweetsTime";
 import MostActiveUser from "./individual_graphs/MostActiveUser";
 import MostUsedUrls from "./individual_graphs/MostUsedUrls";
-import CountTotalByMonth_individual from "./individual_graphs/CountTotalByMonth_individual";
-import AverageReply_individual from "./individual_graphs/AverageReply_individual";
-import AverageLikesTweets_individual from "./individual_graphs/AverageLikesTweets_individual";
-import MedienausageTweets_individual from "./individual_graphs/MedienausageTweets_individual";
-import AverageTweetLength_individual from "./individual_graphs/AverageTweetLength_individual";
-import AverageRetweets_individual from "./individual_graphs/AverageRetweets_individual";
-import TotalReplies_individual from "./individual_graphs/TotalReplies_individual";
-import LiveMediaUsage from "./individual_graphs_live/LiveMediaUsage";
-import LiveSentiment from "./individual_graphs_live/LiveSentiment";
-import LiveCountTotalTweets from "./individual_graphs_live/LiveCountTotalTweets";
+import CountTotalByMonthIndividual from "./individual_graphs/CountTotalByMonthIndividual";
+import AverageReplyIndividual from "./individual_graphs/AverageReplyIndividual";
+import AverageLikesTweetsIndividual from "./individual_graphs/AverageLikesTweetsIndividual";
+import MedienausageTweetsIndividual from "./individual_graphs/MedienausageTweetsIndividual";
+import AverageTweetLengthIndividual from "./individual_graphs/AverageTweetLengthIndividual";
+import AverageRetweetsIndividual from "./individual_graphs/AverageRetweetsIndividual";
+import TotalRepliesIndividual from "./individual_graphs/TotalRepliesIndividual";
 import LiveDashboard from "./individual_graphs_live/Dashboard/LiveDashboard";
 
-//import WordCloud from "./individual_graphs/WordCloud";
 import TweetEmbed from "react-tweet-embed";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > svg": {
-      margin: theme.spacing(2),
-    },
-  },
-}));
 
 function HomeIcon(props) {
   return (
@@ -73,6 +56,7 @@ function App() {
           <a href="/">
             {" "}
             <img
+              alt="Logo der Hochschule für Technik und Wirtschaft Berlin"
               src={logo}
               style={{ display: "flex", width: "80%", padding: "20px" }}
             ></img>
@@ -271,14 +255,14 @@ function CDU() {
       </div>
 
       <div className="right">
-        <CountTotalByMonth_individual party={parties.CDU} />
-        <AverageRetweets_individual party={parties.CDU} />
-        <TotalReplies_individual party={parties.CDU} />
+        <CountTotalByMonthIndividual party={parties.CDU} />
+        <AverageRetweetsIndividual party={parties.CDU} />
+        <TotalRepliesIndividual party={parties.CDU} />
 
-        <AverageReply_individual party={parties.CDU} />
-        <AverageLikesTweets_individual party={parties.CDU} />
-        <AverageTweetLength_individual party={parties.CDU} />
-        <MedienausageTweets_individual party={parties.CDU} />
+        <AverageReplyIndividual party={parties.CDU} />
+        <AverageLikesTweetsIndividual party={parties.CDU} />
+        <AverageTweetLengthIndividual party={parties.CDU} />
+        <MedienausageTweetsIndividual party={parties.CDU} />
 
         <MostUsedHashtags party={parties.CDU} />
         <MostTweetsDay party={parties.CDU} />
@@ -342,14 +326,14 @@ function SPD() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.SPD} />
-        <AverageRetweets_individual party={parties.SPD} />
-        <TotalReplies_individual party={parties.SPD} />
+        <CountTotalByMonthIndividual party={parties.SPD} />
+        <AverageRetweetsIndividual party={parties.SPD} />
+        <TotalRepliesIndividual party={parties.SPD} />
 
-        <AverageReply_individual party={parties.SPD} />
-        <AverageLikesTweets_individual party={parties.SPD} />
-        <AverageTweetLength_individual party={parties.SPD} />
-        <MedienausageTweets_individual party={parties.SPD} />
+        <AverageReplyIndividual party={parties.SPD} />
+        <AverageLikesTweetsIndividual party={parties.SPD} />
+        <AverageTweetLengthIndividual party={parties.SPD} />
+        <MedienausageTweetsIndividual party={parties.SPD} />
 
         <MostUsedHashtags party={parties.SPD} />
         <MostTweetsDay party={parties.SPD} />
@@ -409,14 +393,14 @@ function AFD() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.AfD} />
-        <AverageRetweets_individual party={parties.AfD} />
-        <TotalReplies_individual party={parties.AfD} />
+        <CountTotalByMonthIndividual party={parties.AfD} />
+        <AverageRetweetsIndividual party={parties.AfD} />
+        <TotalRepliesIndividual party={parties.AfD} />
 
-        <AverageReply_individual party={parties.AfD} />
-        <AverageLikesTweets_individual party={parties.AfD} />
-        <AverageTweetLength_individual party={parties.AfD} />
-        <MedienausageTweets_individual party={parties.AfD} />
+        <AverageReplyIndividual party={parties.AfD} />
+        <AverageLikesTweetsIndividual party={parties.AfD} />
+        <AverageTweetLengthIndividual party={parties.AfD} />
+        <MedienausageTweetsIndividual party={parties.AfD} />
 
         <MostUsedHashtags party={parties.AfD} />
         <MostTweetsDay party={parties.AfD} />
@@ -439,7 +423,6 @@ function AFD() {
 }
 function FDP() {
   const [d, setD] = useState([0]);
-  const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       await fetch("http://reagent1.f4.htw-berlin.de:8080/liveTweets/FDP")
@@ -449,7 +432,6 @@ function FDP() {
         .then((data) => {
           var newList = buildList(Object.values(data)[0]);
           setD(newList);
-          setLoading(false); //stop loading when data is fetched
         });
     };
     fetchData();
@@ -478,14 +460,14 @@ function FDP() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.FDP} />
-        <AverageRetweets_individual party={parties.FDP} />
-        <TotalReplies_individual party={parties.FDP} />
+        <CountTotalByMonthIndividual party={parties.FDP} />
+        <AverageRetweetsIndividual party={parties.FDP} />
+        <TotalRepliesIndividual party={parties.FDP} />
 
-        <AverageReply_individual party={parties.FDP} />
-        <AverageLikesTweets_individual party={parties.FDP} />
-        <AverageTweetLength_individual party={parties.FDP} />
-        <MedienausageTweets_individual party={parties.FDP} />
+        <AverageReplyIndividual party={parties.FDP} />
+        <AverageLikesTweetsIndividual party={parties.FDP} />
+        <AverageTweetLengthIndividual party={parties.FDP} />
+        <MedienausageTweetsIndividual party={parties.FDP} />
 
         <MostUsedHashtags party={parties.FDP} />
         <MostTweetsDay party={parties.FDP} />
@@ -545,14 +527,14 @@ function LINKE() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.Linke} />
-        <AverageRetweets_individual party={parties.Linke} />
-        <TotalReplies_individual party={parties.Linke} />
+        <CountTotalByMonthIndividual party={parties.Linke} />
+        <AverageRetweetsIndividual party={parties.Linke} />
+        <TotalRepliesIndividual party={parties.Linke} />
 
-        <AverageReply_individual party={parties.Linke} />
-        <AverageLikesTweets_individual party={parties.Linke} />
-        <AverageTweetLength_individual party={parties.Linke} />
-        <MedienausageTweets_individual party={parties.Linke} />
+        <AverageReplyIndividual party={parties.Linke} />
+        <AverageLikesTweetsIndividual party={parties.Linke} />
+        <AverageTweetLengthIndividual party={parties.Linke} />
+        <MedienausageTweetsIndividual party={parties.Linke} />
 
         <MostUsedHashtags party={parties.Linke} />
         <MostTweetsDay party={parties.Linke} />
@@ -612,14 +594,14 @@ function GRÜNE() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.B90} />
-        <AverageRetweets_individual party={parties.B90} />
-        <TotalReplies_individual party={parties.B90} />
+        <CountTotalByMonthIndividual party={parties.B90} />
+        <AverageRetweetsIndividual party={parties.B90} />
+        <TotalRepliesIndividual party={parties.B90} />
 
-        <AverageReply_individual party={parties.B90} />
-        <AverageLikesTweets_individual party={parties.B90} />
-        <AverageTweetLength_individual party={parties.B90} />
-        <MedienausageTweets_individual party={parties.B90} />
+        <AverageReplyIndividual party={parties.B90} />
+        <AverageLikesTweetsIndividual party={parties.B90} />
+        <AverageTweetLengthIndividual party={parties.B90} />
+        <MedienausageTweetsIndividual party={parties.B90} />
 
         <MostUsedHashtags party={parties.B90} />
         <MostTweetsDay party={parties.B90} />
@@ -679,14 +661,14 @@ function CSU() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.CSU} />
-        <AverageRetweets_individual party={parties.CSU} />
-        <TotalReplies_individual party={parties.CSU} />
+        <CountTotalByMonthIndividual party={parties.CSU} />
+        <AverageRetweetsIndividual party={parties.CSU} />
+        <TotalRepliesIndividual party={parties.CSU} />
 
-        <AverageReply_individual party={parties.CSU} />
-        <AverageLikesTweets_individual party={parties.CSU} />
-        <AverageTweetLength_individual party={parties.CSU} />
-        <MedienausageTweets_individual party={parties.CSU} />
+        <AverageReplyIndividual party={parties.CSU} />
+        <AverageLikesTweetsIndividual party={parties.CSU} />
+        <AverageTweetLengthIndividual party={parties.CSU} />
+        <MedienausageTweetsIndividual party={parties.CSU} />
 
         <MostUsedHashtags party={parties.CSU} />
         <MostTweetsDay party={parties.CSU} />
@@ -746,14 +728,14 @@ function Parteilos() {
         </Typography>
       </div>
       <div className="right">
-        <CountTotalByMonth_individual party={parties.Parteilos} />
-        <AverageRetweets_individual party={parties.Parteilos} />
-        <TotalReplies_individual party={parties.Parteilos} />
+        <CountTotalByMonthIndividual party={parties.Parteilos} />
+        <AverageRetweetsIndividual party={parties.Parteilos} />
+        <TotalRepliesIndividual party={parties.Parteilos} />
 
-        <AverageReply_individual party={parties.Parteilos} />
-        <AverageLikesTweets_individual party={parties.Parteilos} />
-        <AverageTweetLength_individual party={parties.Parteilos} />
-        <MedienausageTweets_individual party={parties.Parteilos} />
+        <AverageReplyIndividual party={parties.Parteilos} />
+        <AverageLikesTweetsIndividual party={parties.Parteilos} />
+        <AverageTweetLengthIndividual party={parties.Parteilos} />
+        <MedienausageTweetsIndividual party={parties.Parteilos} />
 
         <MostUsedHashtags party={parties.Parteilos} />
         <MostTweetsDay party={parties.Parteilos} />

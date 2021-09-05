@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
+
 const options = {
   title: {
     display: true,
-    text: "Ø Retweets",
+    text: "Ø Bilder/Videos pro Tweet",
   },
   legend: {
     display: false,
@@ -16,20 +17,20 @@ const options = {
         ticks: {
           beginAtZero: true, // minimum value will be 0.
           min: 0,
-          max: 50,
-          stepSize: 10, // 1 - 2 - 3 ...
+          max: 1,
+          stepSize: 0.1, // 1 - 2 - 3 ...
         },
       },
     ],
   },
 };
-function AverageRetweets_individual({ party }) {
+function MedienausageTweets_cdu({ party }) {
   const [d, setD] = useState(0);
   const [color, setColor] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/averageRetweetsTweet")
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/mediausagetweets")
         .then((response) => {
           return response.json();
         })
@@ -44,7 +45,7 @@ function AverageRetweets_individual({ party }) {
     <div className="charts">
       {
         <Card>
-          <Line
+          <Bar
             data={{
               labels: [2017, 2018, 2019, 2020, 2021],
               datasets: [
@@ -64,4 +65,4 @@ function AverageRetweets_individual({ party }) {
   );
 }
 
-export default AverageRetweets_individual;
+export default MedienausageTweets_cdu;

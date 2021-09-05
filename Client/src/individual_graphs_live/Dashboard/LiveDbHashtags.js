@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "@material-ui/core";
 
 function LiveDbHashtags({ party }) {
   const [d, setD] = useState();

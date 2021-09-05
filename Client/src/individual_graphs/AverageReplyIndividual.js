@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
+
 const options = {
   title: {
     display: true,
-    text: "Ø Länge eines Tweets",
+    text: "Ø Antworten auf Tweet",
   },
   legend: {
     display: false,
@@ -16,20 +17,21 @@ const options = {
         ticks: {
           beginAtZero: true, // minimum value will be 0.
           min: 0,
-          max: 200,
-          stepSize: 40, // 1 - 2 - 3 ...
+          max: 40,
+          stepSize: 10, // 1 - 2 - 3 ...
         },
       },
     ],
   },
 };
-function AverageTweetLength_individual({ party }) {
+
+function AverageReply_cdu({ party }) {
   const [d, setD] = useState(0);
   const [color, setColor] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://reagent1.f4.htw-berlin.de:8080/averageTweetLength")
+      await fetch("http://reagent1.f4.htw-berlin.de:8080/averageReply")
         .then((response) => {
           return response.json();
         })
@@ -45,10 +47,12 @@ function AverageTweetLength_individual({ party }) {
       {
         <Card>
           <Line
+            title
             data={{
               labels: [2017, 2018, 2019, 2020, 2021],
               datasets: [
                 {
+                  label: "CDU",
                   fill: false,
                   data: [d[2017], d[2018], d[2019], d[2020], d[2021]],
                   backgroundColor: color,
@@ -64,4 +68,4 @@ function AverageTweetLength_individual({ party }) {
   );
 }
 
-export default AverageTweetLength_individual;
+export default AverageReply_cdu;

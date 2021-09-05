@@ -11,6 +11,7 @@ const options = {
     display: true,
   },
 };
+
 function MostTweetsDay({ parties }) {
   const [cdu, setCDU] = useState(0);
   const [spd, setSPD] = useState(0);

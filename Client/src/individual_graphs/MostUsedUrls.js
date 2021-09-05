@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar, HorizontalBar } from "react-chartjs-2";
+import { HorizontalBar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
 
 const options = {

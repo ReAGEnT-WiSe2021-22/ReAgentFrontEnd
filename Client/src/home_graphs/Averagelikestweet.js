@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Card } from "@material-ui/core";
+
 const options = {
   title: {
     display: true,
@@ -23,6 +24,7 @@ const options = {
     ],
   },
 };
+
 function Averagelikestweet({ parties }) {
   const [cdu, setCDU] = useState(0);
   const [spd, setSPD] = useState(0);
